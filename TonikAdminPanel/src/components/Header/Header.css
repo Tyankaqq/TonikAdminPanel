@@ -1,0 +1,512 @@
+/* src/components/Header/Header.css */
+.Header {
+    width: 100%;
+    height: 4.38vw;
+    background-color: var(--clr-dark-brown);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.Header_container {
+    max-width: 1720px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+}
+
+.Header_logo {
+    display: flex;
+    align-items: center;
+    gap: 0.52vw;
+    margin-right: 8.91vw; /* 171px / 1920px * 100 */
+}
+
+.Header_logo_img {
+    width: 6.20vw; /* 119px / 1920px * 100 */
+    height: 2.81vw; /* 54px / 1920px * 100 */
+    object-fit: contain;
+}
+
+.Header_logo_text {
+    font-size: 0.83vw;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    color: var(--clr-white);
+    white-space: nowrap;
+}
+
+.Header_search {
+    position: relative;
+    width: 30.17vw; /* 560px / 1920px * 100 */
+    margin-right: 1.04vw; /* 20px / 1920px * 100 */
+}
+
+.Header_search_icon {
+    position: absolute;
+    left: 1.04vw;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.04vw;
+    height: 1.04vw;
+    object-fit: contain;
+}
+
+.Header_search_input {
+    width: 100%;
+    height: 2.29vw; /* 44px / 1920px * 100 */
+    padding: 0.52vw 1.04vw 0.52vw 3.13vw;
+    background-color: rgba(64, 64, 64, 1);
+    border: none;
+    border-radius: 0.52vw;
+    font-size: 0.73vw;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.Header_search_input::placeholder {
+    color: var(--clr-text-secondary);
+}
+
+.Header_date {
+    position: relative;
+    width: 22.61vw; /* 415px / 1920px * 100 */
+    margin-right: 1.04vw; /* 20px / 1920px * 100 */
+}
+
+.Header_date_trigger {
+    display: flex;
+    align-items: center;
+    gap: 0.52vw;
+    width: 100%;
+    height: 2.29vw; /* 44px / 1920px * 100 */
+    padding: 0.52vw 1.04vw;
+    background-color: rgba(64, 64, 64, 1);
+    border-radius: 0.52vw;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.Header_date_trigger:hover {
+    background-color: rgba(74, 74, 74, 1);
+}
+
+.Header_date_icon {
+    width: 1.04vw;
+    height: 1.04vw;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.Header_date_text {
+    flex: 1;
+    font-size: 0.73vw;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.4);
+    user-select: none;
+}
+
+.Header_date_arrow {
+    width: 0.63vw;
+    height: 0.42vw;
+    object-fit: contain;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.Header_date_arrow_open {
+    transform: rotate(180deg);
+}
+
+.Header_date_dropdown {
+    position: absolute;
+    top: calc(100% + 0.52vw);
+    left: 0;
+    width: 100%;
+    background-color: rgba(64, 64, 64, 1);
+    border-radius: 0.52vw;
+    overflow: hidden;
+    box-shadow: 0 0.52vw 1.56vw rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-0.52vw);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.Header_date_option {
+    padding: 0.73vw 1.04vw;
+    font-size: 0.73vw;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.Header_date_option:hover {
+    background-color: rgba(85, 85, 85, 1);
+    color: rgba(255, 255, 255, 1);
+}
+
+.Header_date_option_selected {
+    background-color: rgba(85, 85, 85, 1);
+    color: rgba(255, 255, 255, 1);
+    font-weight: 500;
+}
+
+.Header_user {
+    display: flex;
+    align-items: center;
+    gap: 0.52vw;
+    margin-right: 3.96vw; /* 76px / 1920px * 100 */
+}
+
+.Header_user_avatar {
+    width: 2.60vw; /* 50px / 1920px * 100 */
+    height: 2.60vw; /* 50px / 1920px * 100 */
+    border-radius: 50%;
+    background-color: rgba(85, 85, 85, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Header_user_initial {
+    font-size: 1.04vw;
+    font-weight: 600;
+    color: var(--clr-white);
+}
+
+.Header_user_name {
+    font-size: 0.73vw;
+    font-weight: 400;
+    color: var(--clr-white);
+    white-space: nowrap;
+}
+
+.Header_settings {
+    width: 1.25vw; /* 24px / 1920px * 100 */
+    height: 1.20vw; /* 23px / 1920px * 100 */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+    margin-right: 1.04vw; /* 20px / 1920px * 100 */
+}
+
+.Header_notifications {
+    width: 1.25vw; /* 24px / 1920px * 100 */
+    height: 1.20vw; /* 23px / 1920px * 100 */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+    position: relative;
+    margin-right: 1.04vw; /* 20px / 1920px * 100 */
+}
+
+.Header_logout {
+    width: 1.25vw; /* 24px / 1920px * 100 */
+    height: 1.20vw; /* 23px / 1920px * 100 */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+.Header_settings:hover,
+.Header_notifications:hover,
+.Header_logout:hover {
+    opacity: 0.7;
+}
+
+.Header_icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.Header_notifications_badge {
+    position: absolute;
+    top: -0.26vw;
+    right: -0.26vw;
+    min-width: 0.83vw;
+    height: 0.83vw;
+    padding: 0 0.21vw;
+    background-color: var(--clr-red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.52vw;
+    font-weight: 600;
+    color: var(--clr-white);
+}
+
+/* ПЛАНШЕТ (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .Header {
+        height: 8.46vw; /* 65px / 768px * 100 */
+    }
+
+    .Header_container {
+        padding: 0 2.60vw; /* 20px / 768px * 100 */
+        gap: 0;
+        justify-content: flex-start;
+    }
+
+    .Header_logo {
+        margin-right: 44.30vw; /* 394px / 768px * 100 */
+        gap: 0;
+        order: 1;
+    }
+
+    .Header_logo_img {
+        width: 15.49vw; /* 119px / 768px * 100 */
+        height: 7.03vw; /* 54px / 768px * 100 */
+    }
+
+    .Header_logo_text {
+        display: none;
+    }
+
+    /* Иконка поиска (без инпута) */
+    .Header_search {
+        margin-top: 0.7vw;
+        position: static;
+        width: auto;
+        margin-right: 2.60vw; /* 20px / 768px * 100 */
+        order: 2;
+    }
+
+    .Header_search_icon {
+        color: white;
+        position: static;
+        transform: none;
+        width: 3.13vw; /* 24px / 768px * 100 */
+        height: 3.13vw;
+        cursor: pointer;
+        transition: opacity 0.3s ease;
+    }
+
+    .Header_search_icon:hover {
+        opacity: 0.7;
+    }
+
+    .Header_search_input {
+        display: none;
+    }
+
+    /* Иконка календаря (без текста и стрелки) */
+    .Header_date {
+        position: static;
+        width: auto;
+        margin-right: 2.60vw; /* 20px / 768px * 100 */
+        order: 3;
+    }
+
+    .Header_date_trigger {
+        width: auto;
+        height: auto;
+        padding: 0;
+        background-color: transparent;
+        border-radius: 0;
+    }
+
+    .Header_date_trigger:hover {
+        background-color: transparent;
+    }
+
+    .Header_date_icon {
+        width: 3.13vw; /* 24px / 768px * 100 */
+        height: 3.13vw;
+        cursor: pointer;
+        transition: opacity 0.3s ease;
+    }
+
+    .Header_date_icon:hover {
+        opacity: 0.7;
+    }
+
+    .Header_date_text {
+        display: none;
+    }
+
+    .Header_date_arrow {
+        display: none;
+    }
+
+    .Header_date_dropdown {
+        left: auto;
+        right: 0;
+        min-width: 52.08vw; /* 400px / 768px * 100 */
+    }
+
+    /* Аватар */
+    .Header_user {
+        order: 4;
+        margin-right: 2.60vw; /* 20px / 768px * 100 */
+        gap: 0;
+    }
+
+    .Header_user_avatar {
+        width: 6.51vw; /* 50px / 768px * 100 */
+        height: 6.51vw; /* 50px / 768px * 100 */
+    }
+
+    .Header_user_initial {
+        font-size: 2.60vw;
+    }
+
+    .Header_user_name {
+        display: none;
+    }
+
+    /* Иконки справа */
+    .Header_settings {
+        width: 3.13vw; /* 24px / 768px * 100 */
+        height: 3.13vw;
+        margin-right: 2.60vw; /* 20px / 768px * 100 */
+        order: 5;
+    }
+
+    .Header_notifications {
+        width: 3.13vw;
+        height: 3.13vw;
+        margin-right: 2.60vw; /* 20px / 768px * 100 */
+        order: 6;
+    }
+
+    .Header_logout {
+        width: 3.13vw;
+        height: 3.13vw;
+        margin-right: 0;
+        order: 7;
+    }
+
+    .Header_notifications_badge {
+        min-width: 2.08vw;
+        height: 2.08vw;
+        font-size: 1.30vw;
+        top: -0.52vw;
+        right: -0.52vw;
+    }
+}
+
+
+/* МОБИЛКА (до 767px) */
+@media (max-width: 767px) {
+    .Header {
+        height: 13.89vw;
+    }
+
+    .Header_container {
+        gap: 2.78vw;
+        padding: 0 4.17vw;
+        flex-wrap: wrap;
+    }
+
+    .Header_logo {
+        min-width: auto;
+        gap: 2.22vw;
+        margin-right: 0;
+    }
+
+    .Header_logo_img {
+        width: 16.67vw;
+        height: 8.33vw;
+    }
+
+    .Header_search {
+        width: 100%;
+        order: 10;
+        margin-right: 0;
+    }
+
+    .Header_search_icon {
+        left: 2.78vw;
+        width: 4.44vw;
+        height: 4.44vw;
+    }
+
+    .Header_search_input {
+        height: 8.33vw;
+        padding: 2.22vw 2.78vw 2.22vw 8.33vw;
+        font-size: 3.33vw;
+    }
+
+    .Header_date {
+        width: auto;
+        margin-right: 0;
+    }
+
+    .Header_date_trigger {
+        height: 8.33vw;
+        gap: 2.22vw;
+        padding: 2.22vw 2.78vw;
+    }
+
+    .Header_date_icon {
+        width: 4.44vw;
+        height: 4.44vw;
+    }
+
+    .Header_date_text {
+        font-size: 3.33vw;
+    }
+
+    .Header_date_arrow {
+        width: 2.78vw;
+        height: 1.67vw;
+    }
+
+    .Header_date_option {
+        padding: 3.33vw;
+        font-size: 3.33vw;
+    }
+
+    .Header_user {
+        display: none;
+    }
+
+    .Header_settings,
+    .Header_notifications {
+        width: 5.56vw;
+        height: 5.56vw;
+        margin-right: 2.78vw;
+    }
+
+    .Header_logout {
+        width: 5.56vw;
+        height: 5.56vw;
+    }
+
+    .Header_notifications_badge {
+        width: 3.33vw;
+        height: 3.33vw;
+        font-size: 2.22vw;
+        top: -1.11vw;
+        right: -1.11vw;
+    }
+}
