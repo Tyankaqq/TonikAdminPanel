@@ -51,7 +51,7 @@
     .Dashboard_tablet {
         display: flex;
         flex-direction: column;
-        gap: 2.60vw; /* 20px / 768px * 100 */
+        gap: 1.3vw; /* 20px / 768px * 100 */
         width: 100%;
     }
 
@@ -65,7 +65,7 @@
     /* 2. Средний блок - 2 колонки */
     .Dashboard_tablet_middle {
         display: flex;
-        gap: 2.60vw; /* 20px */
+        gap: 1.3vw; /* 20px */
         width: 100%;
     }
 
@@ -74,12 +74,12 @@
         flex: 1;
         display: flex;
         flex-direction: column;
-        gap: 2.60vw; /* 20px */
+        gap: 1.3vw; /* 20px */
     }
 
     .Dashboard_tablet_category {
         width: 100%;
-        height: 42.6vw; /* 316px / 768px * 100 */
+        height: 41vw; /* 316px / 768px * 100 */
         overflow: hidden;
     }
 
@@ -94,7 +94,7 @@
         flex: 1;
         display: flex;
         flex-direction: column;
-        gap: 2.60vw; /* 20px */
+        gap: 1.3vw; /* 20px */
     }
 
     .Dashboard_tablet_right > * {
@@ -111,9 +111,6 @@
     }
 }
 
-/* ============================================ */
-/* МОБИЛКА (до 767px)                          */
-/* ============================================ */
 @media (max-width: 767px) {
     /* Скрываем десктоп версию */
     .Dashboard_desktop {
@@ -122,9 +119,9 @@
 
     /* Показываем планшетную версию в колонку */
     .Dashboard_tablet {
-        display: flex;
-        flex-direction: column;
-        gap: 4.17vw; /* 15px / 360px * 100 */
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2.78vw; /* 10px / 360px * 100 */
         width: 100%;
     }
 
@@ -136,14 +133,18 @@
 
     /* На мобилке всё в одну колонку */
     .Dashboard_tablet_middle {
-        flex-direction: column;
-        gap: 4.17vw;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2.78vw; /* 10px */
+        width: 100%;
     }
 
     .Dashboard_tablet_left,
     .Dashboard_tablet_right {
         width: 100%;
-        gap: 4.17vw;
+        display: flex;
+        flex-direction: column;
+        gap: 2.78vw; /* 10px */
     }
 
     .Dashboard_tablet_category,

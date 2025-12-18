@@ -13,7 +13,9 @@ const Header = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedDate, setSelectedDate] = useState('25 Сентября, 2025');
     const [isDateOpen, setIsDateOpen] = useState(false);
+    const [isBurgerOpen, setIsBurgerOpen] = useState(false);
     const dateRef = useRef(null);
+    const burgerRef = useRef(null);
 
     const dateOptions = [
         '25 Сентября, 2025',
@@ -28,6 +30,9 @@ const Header = () => {
         const handleClickOutside = (event) => {
             if (dateRef.current && !dateRef.current.contains(event.target)) {
                 setIsDateOpen(false);
+            }
+            if (burgerRef.current && !burgerRef.current.contains(event.target)) {
+                setIsBurgerOpen(false);
             }
         };
 
@@ -100,12 +105,51 @@ const Header = () => {
 
                 <button className="Header_notifications">
                     <img src={notificationIcon} alt="Notifications" className="Header_icon" />
-                    <span className="Header_notifications_badge">3</span>
+
                 </button>
 
                 <button className="Header_logout">
                     <img src={leaveIcon} alt="Logout" className="Header_icon" />
                 </button>
+
+                {/* БУРГЕР-МЕНЮ (только на мобилке) */}
+                <div className="Header_burger" ref={burgerRef}>
+                    <button
+                        className={`Header_burger_btn ${isBurgerOpen ? 'Header_burger_btn_open' : ''}`}
+                        onClick={() => setIsBurgerOpen(!isBurgerOpen)}
+                    >
+                        <span className="Header_burger_line"></span>
+                        <span className="Header_burger_line"></span>
+                        <span className="Header_burger_line"></span>
+                    </button>
+
+                    {isBurgerOpen && (
+                        <div className="Header_burger_menu">
+                            {/* ПРОФИЛЬ ПОЛЬЗОВАТЕЛЯ */}
+                            <div className="Header_burger_profile">
+                                <div className="Header_burger_avatar">
+                                    <span className="Header_burger_avatar_initial">И</span>
+                                </div>
+                                <span className="Header_burger_username">Иванов Иван Иванович</span>
+                            </div>
+
+                            {/* МЕНЮ */}
+                            <div className="Header_burger_item">
+                                <img src={settingIcon} alt="Settings" className="Header_burger_icon" />
+                                <span className="Header_burger_label">Настройки</span>
+                            </div>
+                            <div className="Header_burger_item">
+                                <img src={notificationIcon} alt="Notifications" className="Header_burger_icon" />
+                                <span className="Header_burger_label">Уведомления</span>
+                                <span className="Header_burger_badge">3</span>
+                            </div>
+                            <div className="Header_burger_item">
+                                <img src={leaveIcon} alt="Logout" className="Header_burger_icon" />
+                                <span className="Header_burger_label">Выйти</span>
+                            </div>
+                        </div>
+                    )}
+                </div>
             </div>
         </header>
     );

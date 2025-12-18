@@ -3,7 +3,7 @@
     width: 100%;
     height: 4.38vw;
     background-color: var(--clr-dark-brown);
-    position: sticky;
+
     top: 0;
     z-index: 100;
 }
@@ -14,19 +14,18 @@
     height: 100%;
     display: flex;
     align-items: center;
-
 }
 
 .Header_logo {
     display: flex;
     align-items: center;
     gap: 0.52vw;
-    margin-right: 8.91vw; /* 171px / 1920px * 100 */
+    margin-right: 8.91vw;
 }
 
 .Header_logo_img {
-    width: 6.20vw; /* 119px / 1920px * 100 */
-    height: 2.81vw; /* 54px / 1920px * 100 */
+    width: 6.20vw;
+    height: 2.81vw;
     object-fit: contain;
 }
 
@@ -41,8 +40,8 @@
 
 .Header_search {
     position: relative;
-    width: 30.17vw; /* 560px / 1920px * 100 */
-    margin-right: 1.04vw; /* 20px / 1920px * 100 */
+    width: 30.17vw;
+    margin-right: 1.04vw;
 }
 
 .Header_search_icon {
@@ -57,7 +56,7 @@
 
 .Header_search_input {
     width: 100%;
-    height: 2.29vw; /* 44px / 1920px * 100 */
+    height: 2.29vw;
     padding: 0.52vw 1.04vw 0.52vw 3.13vw;
     background-color: rgba(64, 64, 64, 1);
     border: none;
@@ -73,8 +72,8 @@
 
 .Header_date {
     position: relative;
-    width: 22.61vw; /* 415px / 1920px * 100 */
-    margin-right: 1.04vw; /* 20px / 1920px * 100 */
+    width: 22.61vw;
+    margin-right: 1.04vw;
 }
 
 .Header_date_trigger {
@@ -82,7 +81,7 @@
     align-items: center;
     gap: 0.52vw;
     width: 100%;
-    height: 2.29vw; /* 44px / 1920px * 100 */
+    height: 2.29vw;
     padding: 0.52vw 1.04vw;
     background-color: rgba(64, 64, 64, 1);
     border-radius: 0.52vw;
@@ -170,12 +169,12 @@
     display: flex;
     align-items: center;
     gap: 0.52vw;
-    margin-right: 3.96vw; /* 76px / 1920px * 100 */
+    margin-right: 3.96vw;
 }
 
 .Header_user_avatar {
-    width: 2.60vw; /* 50px / 1920px * 100 */
-    height: 2.60vw; /* 50px / 1920px * 100 */
+    width: 2.60vw;
+    height: 2.60vw;
     border-radius: 50%;
     background-color: rgba(85, 85, 85, 1);
     display: flex;
@@ -197,8 +196,8 @@
 }
 
 .Header_settings {
-    width: 1.25vw; /* 24px / 1920px * 100 */
-    height: 1.20vw; /* 23px / 1920px * 100 */
+    width: 1.25vw;
+    height: 1.20vw;
     background: transparent;
     border: none;
     cursor: pointer;
@@ -206,12 +205,12 @@
     align-items: center;
     justify-content: center;
     transition: opacity 0.3s ease;
-    margin-right: 1.04vw; /* 20px / 1920px * 100 */
+    margin-right: 1.04vw;
 }
 
 .Header_notifications {
-    width: 1.25vw; /* 24px / 1920px * 100 */
-    height: 1.20vw; /* 23px / 1920px * 100 */
+    width: 1.25vw;
+    height: 1.20vw;
     background: transparent;
     border: none;
     cursor: pointer;
@@ -220,12 +219,12 @@
     justify-content: center;
     transition: opacity 0.3s ease;
     position: relative;
-    margin-right: 1.04vw; /* 20px / 1920px * 100 */
+    margin-right: 1.04vw;
 }
 
 .Header_logout {
-    width: 1.25vw; /* 24px / 1920px * 100 */
-    height: 1.20vw; /* 23px / 1920px * 100 */
+    width: 1.25vw;
+    height: 1.20vw;
     background: transparent;
     border: none;
     cursor: pointer;
@@ -264,39 +263,44 @@
     color: var(--clr-white);
 }
 
+/* БУРГЕР-МЕНЮ (скрыт на десктопе и планшете) */
+.Header_burger {
+    display: none;
+}
+
+/* ПЛАНШЕТ (768px - 1024px) */
 /* ПЛАНШЕТ (768px - 1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
     .Header {
-        height: 8.46vw; /* 65px / 768px * 100 */
+        height: 8.46vw;
     }
 
     .Header_container {
-        padding: 0 2.60vw; /* 20px / 768px * 100 */
+        padding: 0 2.60vw;
         gap: 0;
         justify-content: flex-start;
     }
 
     .Header_logo {
-        margin-right: 44.30vw; /* 394px / 768px * 100 */
+        margin-right: 44.30vw;
         gap: 0;
         order: 1;
     }
 
     .Header_logo_img {
-        width: 15.49vw; /* 119px / 768px * 100 */
-        height: 7.03vw; /* 54px / 768px * 100 */
+        width: 15.49vw;
+        height: 7.03vw;
     }
 
     .Header_logo_text {
         display: none;
     }
 
-    /* Иконка поиска (без инпута) */
     .Header_search {
         margin-top: 0.7vw;
         position: static;
         width: auto;
-        margin-right: 2.60vw; /* 20px / 768px * 100 */
+        margin-right: 2.60vw;
         order: 2;
     }
 
@@ -304,7 +308,7 @@
         color: white;
         position: static;
         transform: none;
-        width: 3.13vw; /* 24px / 768px * 100 */
+        width: 3.13vw;
         height: 3.13vw;
         cursor: pointer;
         transition: opacity 0.3s ease;
@@ -318,11 +322,10 @@
         display: none;
     }
 
-    /* Иконка календаря (без текста и стрелки) */
     .Header_date {
         position: static;
         width: auto;
-        margin-right: 2.60vw; /* 20px / 768px * 100 */
+        margin-right: 2.60vw;
         order: 3;
     }
 
@@ -339,7 +342,7 @@
     }
 
     .Header_date_icon {
-        width: 3.13vw; /* 24px / 768px * 100 */
+        width: 3.13vw;
         height: 3.13vw;
         cursor: pointer;
         transition: opacity 0.3s ease;
@@ -357,22 +360,39 @@
         display: none;
     }
 
+    /* ДРОПДАУН КАЛЕНДАРЯ */
     .Header_date_dropdown {
         left: auto;
         right: 0;
         min-width: 52.08vw; /* 400px / 768px * 100 */
+        border-radius: 2.08vw; /* 16px */
+        box-shadow: 0 2.08vw 5.21vw rgba(0, 0, 0, 0.3);
     }
 
-    /* Аватар */
+    .Header_date_option {
+        padding: 2.60vw 3.13vw; /* 20px 24px */
+        font-size: 2.34vw; /* 18px / 768px * 100 */
+        font-weight: 400;
+    }
+
+    .Header_date_option:hover {
+        background-color: rgba(85, 85, 85, 1);
+    }
+
+    .Header_date_option_selected {
+        background-color: rgba(85, 85, 85, 1);
+        font-weight: 500;
+    }
+
     .Header_user {
         order: 4;
-        margin-right: 2.60vw; /* 20px / 768px * 100 */
+        margin-right: 2.60vw;
         gap: 0;
     }
 
     .Header_user_avatar {
-        width: 6.51vw; /* 50px / 768px * 100 */
-        height: 6.51vw; /* 50px / 768px * 100 */
+        width: 6.51vw;
+        height: 6.51vw;
     }
 
     .Header_user_initial {
@@ -383,18 +403,17 @@
         display: none;
     }
 
-    /* Иконки справа */
     .Header_settings {
-        width: 3.13vw; /* 24px / 768px * 100 */
+        width: 3.13vw;
         height: 3.13vw;
-        margin-right: 2.60vw; /* 20px / 768px * 100 */
+        margin-right: 2.60vw;
         order: 5;
     }
 
     .Header_notifications {
         width: 3.13vw;
         height: 3.13vw;
-        margin-right: 2.60vw; /* 20px / 768px * 100 */
+        margin-right: 2.60vw;
         order: 6;
     }
 
@@ -415,98 +434,233 @@
 }
 
 
-/* МОБИЛКА (до 767px) */
 @media (max-width: 767px) {
     .Header {
-        height: 13.89vw;
+        height: 15.28vw; /* 55px / 360px * 100 */
     }
 
     .Header_container {
-        gap: 2.78vw;
-        padding: 0 4.17vw;
-        flex-wrap: wrap;
+        padding: 0 5.56vw; /* 20px / 360px * 100 */
+        gap: 0;
+        justify-content: flex-start;
     }
 
     .Header_logo {
-        min-width: auto;
-        gap: 2.22vw;
-        margin-right: 0;
+        margin-right: 44.17vw; /* 159px / 360px * 100 */
+        gap: 0;
+        order: 1;
     }
 
     .Header_logo_img {
-        width: 16.67vw;
-        height: 8.33vw;
+        width: 15.28vw; /* 55px / 360px * 100 */
+        height: 6.94vw; /* 25px / 360px * 100 */
     }
 
-    .Header_search {
-        width: 100%;
-        order: 10;
-        margin-right: 0;
-    }
-
-    .Header_search_icon {
-        left: 2.78vw;
-        width: 4.44vw;
-        height: 4.44vw;
-    }
-
-    .Header_search_input {
-        height: 8.33vw;
-        padding: 2.22vw 2.78vw 2.22vw 8.33vw;
-        font-size: 3.33vw;
-    }
-
-    .Header_date {
-        width: auto;
-        margin-right: 0;
-    }
-
-    .Header_date_trigger {
-        height: 8.33vw;
-        gap: 2.22vw;
-        padding: 2.22vw 2.78vw;
-    }
-
-    .Header_date_icon {
-        width: 4.44vw;
-        height: 4.44vw;
-    }
-
-    .Header_date_text {
-        font-size: 3.33vw;
-    }
-
-    .Header_date_arrow {
-        width: 2.78vw;
-        height: 1.67vw;
-    }
-
-    .Header_date_option {
-        padding: 3.33vw;
-        font-size: 3.33vw;
-    }
-
-    .Header_user {
+    .Header_logo_text {
         display: none;
     }
 
+    /* Иконка поиска */
+    .Header_search {
+        position: static;
+        width: auto;
+        margin-right: 5.56vw; /* 20px / 360px * 100 */
+        order: 2;
+    }
+
+    .Header_search_icon {
+        position: static;
+        transform: none;
+        width: 6.67vw; /* 24px / 360px * 100 */
+        height: 6.67vw;
+        cursor: pointer;
+    }
+
+    .Header_search_input {
+        display: none;
+    }
+
+    /* Иконка календаря */
+    .Header_date {
+        position: static;
+        width: auto;
+        margin-right: 5.56vw; /* 20px */
+        order: 3;
+    }
+
+    .Header_date_trigger {
+        width: auto;
+        height: auto;
+        padding: 0;
+        background-color: transparent;
+    }
+
+    .Header_date_icon {
+        width: 6.67vw; /* 24px */
+        height: 6.67vw;
+    }
+
+    .Header_date_text,
+    .Header_date_arrow {
+        display: none;
+    }
+
+    .Header_date_dropdown {
+        left: auto;
+        right: 0;
+        min-width: 88.89vw; /* 320px / 360px * 100 */
+        border-radius: 2.78vw;
+    }
+
+    .Header_date_option {
+        padding: 4.17vw 5.56vw;
+        font-size: 3.89vw;
+    }
+
+    /* СКРЫВАЕМ на мобилке */
+    .Header_user,
     .Header_settings,
-    .Header_notifications {
-        width: 5.56vw;
-        height: 5.56vw;
-        margin-right: 2.78vw;
-    }
-
+    .Header_notifications,
     .Header_logout {
-        width: 5.56vw;
-        height: 5.56vw;
+        display: none;
     }
 
-    .Header_notifications_badge {
-        width: 3.33vw;
-        height: 3.33vw;
-        font-size: 2.22vw;
-        top: -1.11vw;
-        right: -1.11vw;
+    /* ПОКАЗЫВАЕМ бургер-меню */
+    .Header_burger {
+        display: block;
+        position: relative;
+        order: 4;
+        margin-right: 0;
+    }
+
+    .Header_burger_btn {
+        width: 6.67vw; /* 24px */
+        height: 6.67vw;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.39vw; /* 5px */
+        padding: 0;
+        transition: all 0.3s ease;
+    }
+
+    .Header_burger_line {
+        width: 100%;
+        height: 0.56vw; /* 2px */
+        background-color: var(--clr-white);
+        border-radius: 0.56vw;
+        transition: all 0.3s ease;
+    }
+
+    .Header_burger_btn_open .Header_burger_line:nth-child(1) {
+        transform: rotate(45deg) translateY(2.5vw);
+    }
+
+    .Header_burger_btn_open .Header_burger_line:nth-child(2) {
+        opacity: 0;
+    }
+
+    .Header_burger_btn_open .Header_burger_line:nth-child(3) {
+        transform: rotate(-45deg) translateY(-2.5vw);
+    }
+
+    .Header_burger_menu {
+        position: absolute;
+        top: calc(100% + 2.78vw); /* 10px */
+        right: 0;
+        width: 66.67vw; /* 240px */
+        background-color: rgba(64, 64, 64, 1);
+        border-radius: 2.78vw; /* 10px */
+        overflow: hidden;
+        box-shadow: 0 2.78vw 5.56vw rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        animation: slideDown 0.2s ease;
+    }
+
+    /* ПРОФИЛЬ ПОЛЬЗОВАТЕЛЯ */
+    .Header_burger_profile {
+        display: flex;
+        align-items: center;
+        gap: 4.17vw; /* 15px */
+        padding: 5.56vw; /* 20px */
+        background-color: rgba(85, 85, 85, 0.5);
+        border-bottom: 0.28vw solid rgba(85, 85, 85, 0.3);
+    }
+
+    .Header_burger_avatar {
+        width: 13.89vw; /* 50px / 360px * 100 */
+        height: 13.89vw;
+        border-radius: 50%;
+        background-color: rgba(85, 85, 85, 1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .Header_burger_avatar_initial {
+        font-size: 5.56vw; /* 20px */
+        font-weight: 600;
+        color: var(--clr-white);
+    }
+
+    .Header_burger_username {
+        font-size: 4.17vw; /* 15px / 360px * 100 */
+        font-weight: 500;
+        color: var(--clr-white);
+        line-height: 1.3;
+    }
+
+    /* МЕНЮ ITEMS */
+    .Header_burger_item {
+        display: flex;
+        align-items: center;
+        gap: 4.17vw; /* 15px */
+        padding: 4.17vw 5.56vw; /* 15px 20px */
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+        border-bottom: 0.28vw solid rgba(85, 85, 85, 0.3); /* 1px */
+        position: relative;
+    }
+
+    .Header_burger_item:last-child {
+        border-bottom: none;
+    }
+
+    .Header_burger_item:hover {
+        background-color: rgba(85, 85, 85, 1);
+    }
+
+    .Header_burger_icon {
+        width: 6.67vw; /* 24px */
+        height: 6.67vw;
+        object-fit: contain;
+        flex-shrink: 0;
+    }
+
+    .Header_burger_label {
+        font-size: 4.44vw; /* 16px */
+        font-weight: 400;
+        color: var(--clr-white);
+    }
+
+    .Header_burger_badge {
+        position: absolute;
+        right: 5.56vw;
+        min-width: 5.56vw; /* 20px */
+        height: 5.56vw;
+        padding: 0 1.39vw;
+        background-color: var(--clr-red);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3.33vw; /* 12px */
+        font-weight: 600;
+        color: var(--clr-white);
     }
 }

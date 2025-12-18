@@ -1,0 +1,66 @@
+/* src/components/Pagination/Pagination.css */
+.Pagination {
+    display: flex;
+    align-items: center;
+    gap: 0.26vw; /* 5px */
+}
+
+.Pagination_arrow {
+    width: 1.56vw; /* 30px */
+    height: 1.56vw;
+    background-color: rgba(64, 64, 64, 1);
+    border: none;
+    border-radius: 0.26vw; /* 5px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.Pagination_arrow:hover:not(:disabled) {
+    background-color: rgba(85, 85, 85, 1);
+}
+
+.Pagination_arrow:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.Pagination_arrow svg {
+    width: 0.42vw; /* 8px */
+    height: 0.63vw; /* 12px */
+}
+
+.Pagination_btn {
+    width: 1.56vw; /* 30px */
+    height: 1.56vw;
+    background-color: rgba(64, 64, 64, 1);
+    border: none;
+    border-radius: 0.26vw; /* 5px */
+    font-size: 0.73vw; /* 14px */
+    font-weight: 400;
+    color: var(--clr-white);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.Pagination_btn:hover {
+    background-color: rgba(85, 85, 85, 1);
+}
+
+.Pagination_btn_active {
+    background-color: rgba(205, 255, 255, 1);
+    color: rgba(0, 0, 0, 1);
+    font-weight: 500;
+}
+
+.Pagination_dots {
+    width: 1.56vw; /* 30px */
+    height: 1.56vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.73vw; /* 14px */
+    color: var(--clr-white);
+}

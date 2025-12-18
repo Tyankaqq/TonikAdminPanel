@@ -1,8 +1,10 @@
 // src/components/TopProductsTable/TopProductsTable.jsx
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './TopProductsTable.css';
 
 const TopProductsTable = () => {
+    const [isMobile, setIsMobile] = useState(false);
+
     const products = [
         {
             id: 1,
@@ -86,6 +88,16 @@ const TopProductsTable = () => {
         }
     ];
 
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 767);
+        };
+
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return (
         <div className="TopProductsTable">
             <div className="TopProductsTable_header">
@@ -98,10 +110,14 @@ const TopProductsTable = () => {
                     <tr>
                         <th className="TopProductsTable_th">№</th>
                         <th className="TopProductsTable_th">НАЗВАНИЕ ТОВАРА</th>
-                        <th className="TopProductsTable_th">КОЛИЧЕСТВО</th>
-                        <th className="TopProductsTable_th">ПРОДАЖИ</th>
-                        <th className="TopProductsTable_th">ПРОСМОТРЫ</th>
-                        <th className="TopProductsTable_th">ВЫРУЧКА</th>
+                        <th className="TopProductsTable_th">{isMobile ? 'КОЛ-ВО' : 'КОЛИЧЕСТВО'}</th>
+                        {!isMobile && (
+                            <>
+                                <th className="TopProductsTable_th">ПРОДАЖИ</th>
+                                <th className="TopProductsTable_th">ПРОСМОТРЫ</th>
+                                <th className="TopProductsTable_th">ВЫРУЧКА</th>
+                            </>
+                        )}
                     </tr>
                     </thead>
                     <tbody className="TopProductsTable_tbody">
@@ -110,9 +126,13 @@ const TopProductsTable = () => {
                             <td className="TopProductsTable_td">{product.id}</td>
                             <td className="TopProductsTable_td">{product.name}</td>
                             <td className="TopProductsTable_td">{product.quantity}</td>
-                            <td className="TopProductsTable_td">{product.sales}</td>
-                            <td className="TopProductsTable_td">{product.views}</td>
-                            <td className="TopProductsTable_td">{product.revenue}</td>
+                            {!isMobile && (
+                                <>
+                                    <td className="TopProductsTable_td">{product.sales}</td>
+                                    <td className="TopProductsTable_td">{product.views}</td>
+                                    <td className="TopProductsTable_td">{product.revenue}</td>
+                                </>
+                            )}
                         </tr>
                     ))}
                     </tbody>

@@ -156,54 +156,58 @@
 @media (max-width: 767px) {
     .RevenueChart {
         width: 100%;
-        height: 55.56vw;
-        border-radius: 2.78vw;
-        padding: 4.17vw;
+        height: 108.89vw; /* 392px / 360px * 100 */
+        border-radius: 2.78vw; /* 10px */
+        padding: 4.17vw; /* 15px */
     }
 
     .RevenueChart_header {
         flex-direction: column;
         align-items: flex-start;
-        margin-bottom: 4.17vw;
-        gap: 2.78vw;
+        margin-bottom: 4.17vw; /* 15px */
+        gap: 2.78vw; /* 10px */
     }
 
     .RevenueChart_title {
-        font-size: 3.89vw;
+        font-size: 4.5vw; /* 18px / 360px * 100 */
+        font-weight: 600;
     }
 
     .RevenueChart_tabs {
-        gap: 2.78vw;
+        gap: 4.17vw; /* 15px */
     }
 
     .RevenueChart_tab {
-        gap: 1.67vw;
-        padding: 1.67vw 0;
-        font-size: 3.33vw;
+        gap: 2.22vw; /* 8px */
+        padding: 0;
+        font-size: 3.89vw; /* 14px / 360px * 100 */
+        font-weight: 400;
     }
 
     .RevenueChart_tab_indicator {
-        width: 2.78vw;
+        width: 2.78vw; /* 10px */
         height: 2.78vw;
     }
 
     .RevenueChart_graph {
-        gap: 2.22vw;
+        gap: 2.78vw; /* 10px */
     }
 
     .RevenueChart_y_axis {
-        padding: 1.67vw 0;
+        gap: 14.5vw;
     }
 
     .RevenueChart_y_label {
-        font-size: 3.33vw;
+        font-size: 4vw; /* 12px / 360px * 100 */
+        font-weight: 400;
     }
 
     .RevenueChart_x_axis {
-        padding-top: 2.22vw;
+        padding-top: 2.78vw; /* 10px */
     }
 
     .RevenueChart_x_label {
-        font-size: 3.33vw;
+        font-size: 4vw; /* 12px / 360px * 100 */
+        font-weight: 400;
     }
 }

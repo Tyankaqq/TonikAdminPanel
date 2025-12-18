@@ -1,24 +1,81 @@
 // src/components/RevenueChart/RevenueChart.jsx
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './RevenueChart.css';
 
 const RevenueChart = () => {
-    const incomeData = [
-        { month: 'Мар.', value: 20 },
-        { month: 'Апр.', value: 18 },
-        { month: 'Май', value: 25 },
-        { month: 'Июн.', value: 5 },
-        { month: 'Июл.', value: 17 }
-    ];
+    const [deviceType, setDeviceType] = useState('desktop');
 
-    const viewsData = [
-        { month: 'Мар.', value: 10 },
-        { month: 'Апр.', value: 10 },
-        { month: 'Май', value: 15 },
-        { month: 'Июн.', value: 12 },
-        { month: 'Июл.', value: 28 }
-    ];
+    // Данные для разных устройств
+    const chartData = {
+        desktop: {
+            income: [
+                { month: 'Мар.', value: 20 },
+                { month: 'Апр.', value: 18 },
+                { month: 'Май', value: 25 },
+                { month: 'Июн.', value: 5 },
+                { month: 'Июл.', value: 17 }
+            ],
+            views: [
+                { month: 'Мар.', value: 10 },
+                { month: 'Апр.', value: 10 },
+                { month: 'Май', value: 15 },
+                { month: 'Июн.', value: 12 },
+                { month: 'Июл.', value: 28 }
+            ]
+        },
+        tablet: {
+            income: [
+                { month: 'Фев.', value: 15 },
+                { month: 'Мар.', value: 20 },
+                { month: 'Апр.', value: 18 },
+                { month: 'Май', value: 25 },
+                { month: 'Июн.', value: 5 },
+                { month: 'Июл.', value: 17 },
+                { month: 'Авг.', value: 22 }
+            ],
+            views: [
+                { month: 'Фев.', value: 8 },
+                { month: 'Мар.', value: 10 },
+                { month: 'Апр.', value: 10 },
+                { month: 'Май', value: 15 },
+                { month: 'Июн.', value: 12 },
+                { month: 'Июл.', value: 28 },
+                { month: 'Авг.', value: 30 }
+            ]
+        },
+        mobile: {
+            income: [
+                { month: 'Июн.', value: 5 },
+                { month: 'Июл.', value: 17 },
+                { month: 'Авг.', value: 22 }
+            ],
+            views: [
+                { month: 'Июн.', value: 12 },
+                { month: 'Июл.', value: 28 },
+                { month: 'Авг.', value: 30 }
+            ]
+        }
+    };
 
+    useEffect(() => {
+        const handleResize = () => {
+            const width = window.innerWidth;
+            if (width <= 767) {
+                setDeviceType('mobile');
+            } else if (width <= 1024) {
+                setDeviceType('tablet');
+            } else {
+                setDeviceType('desktop');
+            }
+        };
+
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const incomeData = chartData[deviceType].income;
+    const viewsData = chartData[deviceType].views;
     const maxValue = 40;
 
     return (

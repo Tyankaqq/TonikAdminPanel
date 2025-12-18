@@ -169,7 +169,7 @@
     }
 
     .TopProductsTable_title {
-        font-size: 3.89vw;
+        font-size: 4.5vw;
     }
 
     .TopProductsTable_wrapper {
@@ -185,9 +185,10 @@
     }
 
     .TopProductsTable_th {
-        padding: 2.78vw 3.33vw;
-        font-size: 2.78vw;
+        padding: 2.78vw 3.33vw 3.33vw 0;
+        font-size: 4vw;
         white-space: nowrap;
+
     }
 
     .TopProductsTable_th:first-child {
@@ -199,8 +200,8 @@
     }
 
     .TopProductsTable_td {
-        padding: 3.33vw;
-        font-size: 3.33vw;
+        padding: 3.33vw 0;
+        font-size: 4vw;
         white-space: nowrap;
     }
 }
