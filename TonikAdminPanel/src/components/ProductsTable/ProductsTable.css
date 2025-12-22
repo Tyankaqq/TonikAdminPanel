@@ -21,7 +21,7 @@
 }
 
 .ProductsTable_th {
-    padding: 0 0.52vw; /* 0 10px */
+    padding: 1.1vw 0.52vw; /* 0 10px */
     text-align: left;
     font-size: 0.85vw; /* 12px */
     font-weight: 500;
@@ -29,7 +29,7 @@
     letter-spacing: 0.05em;
     line-height: 110%;
     border-bottom: 0.05vw solid rgba(140, 140, 140, 1);
-    padding-bottom: 0.52vw; /* 10px */
+    padding-bottom: 1.1vw; /* 10px */
 }
 
 .ProductsTable_th_checkbox {
@@ -212,4 +212,12 @@
     margin-top: 1.56vw; /* 30px */
     display: flex;
     justify-content: center;
+}
+.ProductsTable_name--clickable {
+    cursor: pointer;
+    transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+.ProductsTable_name--clickable:hover {
+    color: rgba(205, 255, 255, 1);
+    text-decoration: underline;
 }

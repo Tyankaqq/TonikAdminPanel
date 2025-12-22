@@ -1,31 +1,102 @@
 // src/components/ProductsTable/ProductsTable.jsx
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import './ProductsTable.css';
 import Pagination from '../Pagination/Pagination';
 import PointerIcon from '../../assets/icons/pointer.png';
 import GalochkaIcon from '../../assets/icons/WhiteGalochka.png';
 
-const ProductsTable = () => {
+const ProductsTable = ({
+                           searchValue = '',
+                           category = 'all',
+                           status = 'all',
+                           dateFrom = '',
+                           dateTo = '',
+                           priceMin = 0,
+                           priceMax = 100000,
+                           onProductPreview,
+                           allProducts = []
+                       }) => {
     const [selectedProducts, setSelectedProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [openMenuId, setOpenMenuId] = useState(null);
 
-    const products = [
-        { id: 1, name: 'Название товара', productId: 'B111AA', category: 'Категория', views: 25, price: '20 222 ₽', quantity: 25, active: false },
-        { id: 2, name: 'Название товара', productId: 'B111AA', category: 'Категория', views: 23, price: '50 500 ₽', quantity: 23, active: true },
-        { id: 3, name: 'Название товара', productId: 'B111AA', category: 'Категория', views: 42, price: '50 500 ₽', quantity: 42, active: true },
-        { id: 4, name: 'Название товара', productId: 'B111AA', category: 'Категория', views: 20, price: '20 222 ₽', quantity: 20, active: false },
-        { id: 5, name: 'Название товара', productId: 'B111AA', category: 'Категория', views: 55, price: '20 222 ₽', quantity: 55, active: false },
-        { id: 6, name: 'Название товара', productId: 'B111AA', category: 'Категория', views: 5,  price: '20 222 ₽', quantity: 5,  active: false },
-        { id: 7, name: 'Название товара', productId: 'B111AA', category: 'Категория', views: 20, price: '50 500 ₽', quantity: 20, active: true },
-        { id: 8, name: 'Название товара', productId: 'B111AA', category: 'Категория', views: 102,price: '50 500 ₽', quantity: 102,active: true },
-        { id: 9, name: 'Название товара', productId: 'B111AA', category: 'Категория', views: 42, price: '50 500 ₽', quantity: 42, active: true },
-        { id:10, name: 'Название товара', productId: 'B111AA', category: 'Категория', views: 60, price: '20 222 ₽', quantity: 60, active: false }
-    ];
+    // Сортировка
+    const [sortField, setSortField] = useState(null);
+    const [sortDirection, setSortDirection] = useState('asc'); // 'asc' или 'desc'
+
+    // Функция нормализации для поиска
+    const normalize = (str) => str.toLowerCase().trim();
+
+    // Фильтрация товаров
+    const filteredProducts = useMemo(() => {
+        return allProducts.filter((p) => {
+            // Поиск по названию, ID товара или числовому ID
+            if (searchValue) {
+                const search = normalize(searchValue);
+                const matchName = normalize(p.name).includes(search);
+                const matchProductId = normalize(p.productId).includes(search);
+                const matchId = p.id.toString().includes(search);
+                if (!matchName && !matchProductId && !matchId) return false;
+            }
+
+            // Фильтр по категории
+            if (category !== 'all' && p.category !== category) return false;
+
+            // Фильтр по статусу
+            if (status !== 'all' && p.status !== status) return false;
+
+            // Фильтр по дате
+            if (dateFrom && p.date < dateFrom) return false;
+            if (dateTo && p.date > dateTo) return false;
+
+            // Фильтр по цене
+            if (p.price < priceMin || p.price > priceMax) return false;
+
+            return true;
+        });
+    }, [allProducts, searchValue, category, status, dateFrom, dateTo, priceMin, priceMax]);
+
+    // Сортировка отфильтрованных товаров
+    const sortedProducts = useMemo(() => {
+        if (!sortField) return filteredProducts;
+
+        const sorted = [...filteredProducts].sort((a, b) => {
+            let aValue = a[sortField];
+            let bValue = b[sortField];
+
+            // Для строк используем localeCompare
+            if (typeof aValue === 'string') {
+                aValue = aValue.toLowerCase();
+                bValue = bValue.toLowerCase();
+                return sortDirection === 'asc'
+                    ? aValue.localeCompare(bValue)
+                    : bValue.localeCompare(aValue);
+            }
+
+            // Для чисел
+            return sortDirection === 'asc'
+                ? aValue - bValue
+                : bValue - aValue;
+        });
+
+        return sorted;
+    }, [filteredProducts, sortField, sortDirection]);
+
+    // Обработчик клика на заголовок колонки
+    const handleSort = (field) => {
+        if (sortField === field) {
+            // Если кликнули на ту же колонку - меняем направление
+            setSortDirection(prev => prev === 'asc' ? 'desc' : 'asc');
+        } else {
+            // Новая колонка - сортируем по возрастанию
+            setSortField(field);
+            setSortDirection('asc');
+        }
+    };
 
     const handleSelectAll = (e) => {
         if (e.target.checked) {
-            setSelectedProducts(products.map(p => p.id));
+            setSelectedProducts(sortedProducts.map(p => p.id));
         } else {
             setSelectedProducts([]);
         }
@@ -47,6 +118,50 @@ const ProductsTable = () => {
         setOpenMenuId(prev => (prev === id ? null : id));
     };
 
+    const handleProductClick = (productId) => {
+        if (onProductPreview) {
+            onProductPreview(productId);
+        }
+    };
+
+    const handlePreviewClick = (productId) => {
+        setOpenMenuId(null);
+        if (onProductPreview) {
+            onProductPreview(productId);
+        }
+    };
+
+    const formatPrice = (price) => {
+        return `${price.toLocaleString('ru-RU')} ₽`;
+    };
+
+    const formatCategory = (cat) => {
+        const map = {
+            'tonics': 'Тоники',
+            'creams': 'Кремы',
+            'serums': 'Сыворотки'
+        };
+        return map[cat] || cat;
+    };
+
+    // Индикатор направления сортировки
+    const getSortIcon = (field) => {
+        if (sortField !== field) {
+            return <img src={GalochkaIcon} alt="" className="ProductsTable_sort-icon" />;
+        }
+        return (
+            <img
+                src={GalochkaIcon}
+                alt=""
+                className="ProductsTable_sort-icon ProductsTable_sort-icon--active"
+                style={{
+                    transform: sortDirection === 'desc' ? 'rotate(180deg)' : 'rotate(0deg)',
+                    opacity: 1
+                }}
+            />
+        );
+    };
+
     return (
         <div className="ProductsTable">
             <div className="ProductsTable_wrapper">
@@ -56,127 +171,142 @@ const ProductsTable = () => {
                         <th className="ProductsTable_th ProductsTable_th_checkbox">
                             <input
                                 type="checkbox"
-                                checked={selectedProducts.length === products.length}
+                                checked={sortedProducts.length > 0 && selectedProducts.length === sortedProducts.length}
                                 onChange={handleSelectAll}
                                 className="ProductsTable_checkbox"
                             />
                         </th>
 
-                        <th className="ProductsTable_th">
+                        <th className="ProductsTable_th" onClick={() => handleSort('name')}>
                             <div className="ProductsTable_th_inner">
                                 НАЗВАНИЕ ТОВАРА
-                                <img src={GalochkaIcon} alt="" className="ProductsTable_sort-icon" />
+                                {getSortIcon('name')}
                             </div>
                         </th>
 
-                        <th className="ProductsTable_th">
+                        <th className="ProductsTable_th" onClick={() => handleSort('productId')}>
                             <div className="ProductsTable_th_inner">
                                 ID ТОВАРА
-                                <img src={GalochkaIcon} alt="" className="ProductsTable_sort-icon" />
+                                {getSortIcon('productId')}
                             </div>
                         </th>
 
-                        <th className="ProductsTable_th">
+                        <th className="ProductsTable_th" onClick={() => handleSort('category')}>
                             <div className="ProductsTable_th_inner">
                                 КАТЕГОРИЯ
-                                <img src={GalochkaIcon} alt="" className="ProductsTable_sort-icon" />
+                                {getSortIcon('category')}
                             </div>
                         </th>
 
-                        <th className="ProductsTable_th">
+                        <th className="ProductsTable_th" onClick={() => handleSort('views')}>
                             <div className="ProductsTable_th_inner">
                                 ПРОСМОТРЫ
-                                <img src={GalochkaIcon} alt="" className="ProductsTable_sort-icon" />
+                                {getSortIcon('views')}
                             </div>
                         </th>
 
-                        <th className="ProductsTable_th">
+                        <th className="ProductsTable_th" onClick={() => handleSort('price')}>
                             <div className="ProductsTable_th_inner">
                                 ЦЕНА
-                                <img src={GalochkaIcon} alt="" className="ProductsTable_sort-icon" />
+                                {getSortIcon('price')}
                             </div>
                         </th>
 
-                        <th className="ProductsTable_th">
+                        <th className="ProductsTable_th" onClick={() => handleSort('quantity')}>
                             <div className="ProductsTable_th_inner">
                                 КОЛИЧЕСТВО
-                                <img src={GalochkaIcon} alt="" className="ProductsTable_sort-icon" />
+                                {getSortIcon('quantity')}
                             </div>
                         </th>
 
-                        <th className="ProductsTable_th">
+                        <th className="ProductsTable_th" onClick={() => handleSort('active')}>
                             <div className="ProductsTable_th_inner">
                                 СОСТОЯНИЕ
-                                <img src={GalochkaIcon} alt="" className="ProductsTable_sort-icon" />
+                                {getSortIcon('active')}
                             </div>
                         </th>
                     </tr>
                     </thead>
 
                     <tbody className="ProductsTable_tbody">
-                    {products.map((product) => (
-                        <tr
-                            key={product.id}
-                            className={`ProductsTable_row ${product.active ? 'ProductsTable_row_active' : ''}`}
-                        >
-                            <td className="ProductsTable_td ProductsTable_td_checkbox">
-                                <input
-                                    type="checkbox"
-                                    checked={selectedProducts.includes(product.id)}
-                                    onChange={() => handleSelectProduct(product.id)}
-                                    className="ProductsTable_checkbox"
-                                />
-                            </td>
-
-                            {/* Название + три точки + маленькая модалка */}
-                            <td className="ProductsTable_td">
-                                <div className="ProductsTable_name-wrap">
-                                    <span className="ProductsTable_name">
-                                        {product.name}
-                                    </span>
-
-                                    <button
-                                        type="button"
-                                        className="ProductsTable_more-btn"
-                                        onClick={() => toggleRowMenu(product.id)}
-                                    >
-                                        <img src={PointerIcon} alt="Еще" />
-                                    </button>
-
-                                    {openMenuId === product.id && (
-                                        <div className="ProductsTable_context">
-                                            <button type="button">Предпросмотр</button>
-                                            <button type="button">Редактировать</button>
-                                            <button type="button">Удалить</button>
-                                        </div>
-                                    )}
-                                </div>
-                            </td>
-
-                            <td className="ProductsTable_td ProductsTable_td_secondary">
-                                {product.productId}
-                            </td>
-                            <td className="ProductsTable_td">{product.category}</td>
-                            <td className="ProductsTable_td">{product.views}</td>
-                            <td className="ProductsTable_td">{product.price}</td>
-                            <td className="ProductsTable_td">{product.quantity}</td>
-
-                            <td className="ProductsTable_td">
-                                <label className="ProductsTable_toggle">
-                                    <input
-                                        type="checkbox"
-                                        checked={product.active}
-                                        onChange={() => handleToggleActive(product.id)}
-                                        className="ProductsTable_toggle_input"
-                                    />
-                                    <span className="ProductsTable_toggle_slider"></span>
-                                    <span className="ProductsTable_toggle_label">
-                                        {product.active ? 'Активный' : 'Не активный'}
-                                    </span>
-                                </label>
+                    {sortedProducts.length === 0 ? (
+                        <tr>
+                            <td colSpan="8" style={{ textAlign: 'center', padding: '2vw', color: 'rgba(255,255,255,0.4)' }}>
+                                Товары не найдены
                             </td>
                         </tr>
-                    ))}
+                    ) : (
+                        sortedProducts.map((product) => (
+                            <tr
+                                key={product.id}
+                                className={`ProductsTable_row ${product.active ? 'ProductsTable_row_active' : ''}`}
+                            >
+                                <td className="ProductsTable_td ProductsTable_td_checkbox">
+                                    <input
+                                        type="checkbox"
+                                        checked={selectedProducts.includes(product.id)}
+                                        onChange={() => handleSelectProduct(product.id)}
+                                        className="ProductsTable_checkbox"
+                                    />
+                                </td>
+
+                                <td className="ProductsTable_td">
+                                    <div className="ProductsTable_name-wrap">
+                                        <span
+                                            className="ProductsTable_name ProductsTable_name--clickable"
+                                            onClick={() => handleProductClick(product.id)}
+                                        >
+                                            {product.name}
+                                        </span>
+
+                                        <button
+                                            type="button"
+                                            className="ProductsTable_more-btn"
+                                            onClick={() => toggleRowMenu(product.id)}
+                                        >
+                                            <img src={PointerIcon} alt="Еще" />
+                                        </button>
+
+                                        {openMenuId === product.id && (
+                                            <div className="ProductsTable_context">
+                                                <button
+                                                    type="button"
+                                                    onClick={() => handlePreviewClick(product.id)}
+                                                >
+                                                    Предпросмотр
+                                                </button>
+                                                <button type="button">Редактировать</button>
+                                                <button type="button">Удалить</button>
+                                            </div>
+                                        )}
+                                    </div>
+                                </td>
+
+                                <td className="ProductsTable_td ProductsTable_td_secondary">
+                                    {product.productId}
+                                </td>
+                                <td className="ProductsTable_td">{formatCategory(product.category)}</td>
+                                <td className="ProductsTable_td">{product.views}</td>
+                                <td className="ProductsTable_td">{formatPrice(product.price)}</td>
+                                <td className="ProductsTable_td">{product.quantity}</td>
+
+                                <td className="ProductsTable_td">
+                                    <label className="ProductsTable_toggle">
+                                        <input
+                                            type="checkbox"
+                                            checked={product.active}
+                                            onChange={() => handleToggleActive(product.id)}
+                                            className="ProductsTable_toggle_input"
+                                        />
+                                        <span className="ProductsTable_toggle_slider"></span>
+                                        <span className="ProductsTable_toggle_label">
+                                            {product.active ? 'Активный' : 'Не активный'}
+                                        </span>
+                                    </label>
+                                </td>
+                            </tr>
+                        ))
+                    )}
                     </tbody>
                 </table>
             </div>
@@ -184,7 +314,7 @@ const ProductsTable = () => {
             <div className="ProductsTable_footer">
                 <Pagination
                     currentPage={currentPage}
-                    totalPages={10}
+                    totalPages={Math.ceil(sortedProducts.length / 10)}
                     onPageChange={setCurrentPage}
                 />
             </div>
