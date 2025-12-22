@@ -13,16 +13,14 @@
 
 .ProductsPage_main {
     flex: 1;
-
     overflow-y: auto;
 }
 
 .ProductsPage_content {
     width: 100%;
-
     background-color: var(--clr-dark-bg);
-    border-radius: 1.04vw; /* 20px */
-    padding: 1.56vw; /* 30px */
+    border-radius: 1.04vw;
+    padding: 1.56vw;
 }
 
 /* HEADER */
@@ -30,36 +28,36 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.56vw; /* 30px */
+    margin-bottom: 1.56vw;
 }
 
 .ProductsPage_title {
-    font-size: 2.60vw; /* 50px / 1920px * 100 */
+    font-size: 2.60vw;
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: -0.03em;
-    line-height: 110%;
+    line-height: 1.1;
     color: var(--clr-white);
     margin: 0;
 }
 
 .ProductsPage_actions {
     display: flex;
-    gap: 0.78vw; /* 15px */
+    gap: 0.78vw;
     align-items: center;
 }
 
 .ProductsPage_export {
-    width: 14.06vw; /* 270px / 1920px * 100 */
-    height: 2.19vw; /* 42px */
+    width: 14.06vw;
+    height: 2.19vw;
     background-color: var(--clr-white);
-    border-radius: 2.08vw; /* 40px */
+    border-radius: 2.08vw;
     border: none;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 1.04vw; /* 0 20px */
-    font-size: 0.73vw; /* 14px */
+    padding: 0 1.04vw;
+    font-size: 0.73vw;
     font-weight: 400;
     color: rgba(0, 0, 0, 1);
     cursor: pointer;
@@ -71,12 +69,12 @@
 }
 
 .ProductsPage_export svg {
-    width: 0.63vw; /* 12px */
+    width: 0.63vw;
     height: 0.63vw;
 }
 
 .ProductsPage_add {
-    width: 2.19vw; /* 42px */
+    width: 2.19vw;
     height: 2.19vw;
     background-color: rgba(205, 255, 255, 1);
     border-radius: 50%;
@@ -93,31 +91,31 @@
 }
 
 .ProductsPage_add svg {
-    width: 1.04vw; /* 20px */
+    width: 1.04vw;
     height: 1.04vw;
 }
 
 /* CONTROLS */
 .ProductsPage_controls {
     display: flex;
-    gap: 1.04vw; /* 20px */
-    margin-bottom: 1.04vw; /* 20px */
+    gap: 1.04vw;
+    margin-bottom: 1.04vw;
 }
 
 .ProductsPage_search {
     flex: 1;
-    max-width: 57.76vw; /* 1109px / 1920px * 100 */
-    height: 2.29vw; /* 44px */
+
+    height: 2.29vw;
     background-color: rgba(64, 64, 64, 1);
-    border-radius: 0.36vw; /* 7px */
+    border-radius: 0.36vw;
     display: flex;
     align-items: center;
-    gap: 0.52vw; /* 10px */
-    padding: 0 1.04vw; /* 0 20px */
+    gap: 0.52vw;
+    padding: 0 1.04vw;
 }
 
 .ProductsPage_search svg {
-    width: 1.04vw; /* 20px */
+    width: 1.04vw;
     height: 1.04vw;
     flex-shrink: 0;
 }
@@ -127,7 +125,7 @@
     background: transparent;
     border: none;
     outline: none;
-    font-size: 0.73vw; /* 14px */
+    font-size: 0.73vw;
     font-weight: 400;
     color: var(--clr-white);
 }
@@ -137,16 +135,16 @@
 }
 
 .ProductsPage_filters {
-    width: 12.55vw; /* 241px / 1920px * 100 */
-    height: 2.29vw; /* 44px */
+    width: 12.55vw;
+    height: 2.29vw;
     background-color: rgba(64, 64, 64, 1);
-    border-radius: 0.36vw; /* 7px */
+    border-radius: 0.36vw;
     border: none;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 1.04vw; /* 0 20px */
-    font-size: 0.73vw; /* 14px */
+    padding: 0 1.04vw;
+    font-size: 0.73vw;
     font-weight: 400;
     color: var(--clr-white);
     cursor: pointer;
@@ -158,6 +156,366 @@
 }
 
 .ProductsPage_filters svg {
-    width: 1.04vw; /* 20px */
+    width: 1.04vw;
     height: 1.04vw;
+}
+.ProductsPage_export_button{
+    font-size: 0.85vw;
+    gap: 0.55vw;
+    align-items: center;
+    display: flex;
+}
+/* MODAL */
+.AddProductOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 90;
+}
+
+.AddProductPanel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 50vw;
+    height: 100vh;
+    background: #170c0c;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    padding: 1.25vw 1.67vw;
+    box-shadow: -0.42vw 0 1.25vw rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+}
+
+.AddProductPanel_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25vw;
+}
+
+.AddProductPanel_header h2 {
+    font-size: 1.7vw;
+    font-weight: 400;
+    margin: 0;
+}
+
+.AddProductPanel_close {
+    background: transparent;
+    border: none;
+    color: #ffffff80;
+    font-size: 1.04vw;
+    cursor: pointer;
+}
+
+.AddProductPanel_body {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 0.42vw;
+}
+
+/* две колонки */
+.AddProductPanel_grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); /* две равные колонки */
+    gap: 1.25vw;
+    align-items: flex-start;
+}
+
+
+.AddProductPanel_col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1vw;
+}
+
+.AddProductPanel_block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55vw;
+}
+
+.AddProductPanel_block_title {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.85vw;
+    font-weight: 400;
+    margin: 0;
+}
+
+.AddProductPanel_group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55vw;
+}
+
+.AddProductPanel_group label {
+    font-size: 0.85vw;
+    color: #ffffff80;
+}
+
+/* выравнивание Сертификатов и Доп.товаров по одному уровню */
+.AddProductPanel_block--cert {
+    margin-top: 1.04vw;
+}
+
+.AddProductPanel_block--extra {
+    margin-top: 1.04vw;
+}
+
+/* поля */
+.field-input,
+.field-textarea,
+.AddProductPanel_upload,
+.AddProductPanel_select-btn {
+    background: rgba(64, 64, 64, 1);
+    border-radius: 0.42vw;
+    border: 0.05vw solid rgba(255, 255, 255, 0.12);
+    color: #fff;
+    font-size: 0.85vw;
+    padding: 0.42vw 0.63vw;
+    outline: none;
+}
+.AddProductPanel_inline--2 > .AddProductPanel_group {
+    flex: 0 0 10.83vw;      /* ≈ 208px при 1920px ширины */
+    max-width: 10.47vw;
+}
+.field-input {
+
+    height: 2.08vw;
+}
+
+/* базовый textarea */
+.field-textarea {
+    min-height: 6.25vw;
+    resize: vertical;
+    background: rgba(64, 64, 64, 1);
+    border-radius: 0.42vw;
+    border: 0.05vw solid rgba(255, 255, 255, 0.12);
+}
+.AddProductPanel_subtitle {
+    margin: 0;
+    font-size: 0.85vw;
+    color: white;
+}
+/* описание под названием — фикс ~229px */
+.field-textarea--description {
+    height: 11.93vw;
+    min-height: 11.93vw;
+    max-height: 11.93vw;
+    resize: none;
+
+    background: rgba(30, 13, 13, 1);      /* темный фон внутри */
+    border-radius: 0.52vw;                /* ~10px */
+    border: 0.52vw solid rgba(64, 64, 64, 1); /* «рамка» 10px темно-серая */
+}
+
+.field-input::placeholder,
+.field-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* загрузка файлов */
+.AddProductPanel_upload {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 6.25vw;
+    text-align: center;
+    cursor: pointer;
+}
+
+.AddProductPanel_upload--main {
+    height: 6.15vw;
+}
+
+/* скрытый input file */
+.AddProductPanel_upload_input {
+    display: none;
+}
+
+.AddProductPanel_upload_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.52vw;
+}
+
+.AddProductPanel_upload_content img {
+    width: 2.1vw;
+    height: 2.1vw;
+    object-fit: contain;
+}
+
+.AddProductPanel_upload span {
+    font-size: 0.68vw;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.AddProductPanel_upload span button {
+    background: none;
+    border: none;
+    color: #cfffff;
+    cursor: pointer;
+    padding: 0;
+    font-size: inherit;
+}
+
+/* превью фото */
+.AddProductPanel_photos_row {
+    margin-top: 0.3vw;
+    display: flex;
+    gap: 1.1vw;
+}
+
+.AddProductPanel_photo_small {
+    position: relative;
+    flex: 0 0 auto;
+    width: 4.9vw;
+    height: 4.9vw;
+    border-radius: 0.42vw;
+    background: rgba(64, 64, 64, 1);
+    overflow: hidden;
+}
+
+.AddProductPanel_photo_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* иконки поверх фото */
+.AddProductPanel_photo_actions {
+    position: absolute;
+    left: 0.42vw;
+    right: 0.42vw;
+    bottom: 0.42vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.AddProductPanel_icon-btn {
+    width: 1.04vw;
+    height: 1.04vw;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.AddProductPanel_icon-btn img {
+    width: 0.63vw;
+    height: 0.63vw;
+    object-fit: contain;
+}
+
+/* строки с несколькими полями */
+.AddProductPanel_inline {
+    display: flex;
+    gap: 1.1vw;
+}
+
+.AddProductPanel_inline--2 > .AddProductPanel_group {
+    flex: 1;
+}
+
+/* кнопка выбора из каталога */
+.AddProductPanel_select-btn {
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 0.25vw;
+}
+.AddProductPanel_block_title--accent{
+    font-size: 1.1vw;
+    font-weight: 400;
+    color: white;
+    margin-bottom: 0.55vw;
+}
+/* ссылки */
+.AddProductPanel_link {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 0.85vw;
+    cursor: pointer;
+    padding: 0;
+    align-self: flex-start;
+    text-decoration: underline;
+    text-underline-offset: 0.25vw;
+}
+
+/* нижний row: тип/вид */
+.AddProductPanel_bottom-row {
+    margin-bottom: 2vw;
+    display: flex;
+    gap: 0.83vw;
+    margin-top: 2.1vw;
+}
+/* вариант upload для файла документа с иконкой */
+.AddProductPanel_upload--doc {
+    justify-content: flex-start;
+    gap: 0.63vw;
+    padding-left: 0.83vw;
+}
+
+.AddProductPanel_upload_icon {
+    width: 1.25vw;
+    height: 1.25vw;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.AddProductPanel_bottom-row .AddProductPanel_group {
+    flex: 1;
+}
+.AddProductPanel_row {
+    display: flex;
+    gap: 0.83vw;
+    margin-top: 1.25vw;
+}
+.AddProductPanel_row .AddProductPanel_block {
+    flex: 1; /* сертификаты слева, доп.товары справа, 50/50 */
+}
+
+.AddProductPanel_select-btn{
+    height: 2.08vw;
+}
+/* футер */
+.AddProductPanel_footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.63vw;
+    padding-top: 0.83vw;
+    border-top: 0.05vw solid rgba(255, 255, 255, 0.12);
+}
+
+.AddProductPanel_save {
+    flex: 1;
+    padding: 0.52vw 1.25vw;
+    border-radius: 5.21vw;
+    border: none;
+    background: #cfffff;
+    color: #111;
+    font-size: 0.73vw;
+    cursor: pointer;
+}
+
+.AddProductPanel_cancel {
+    flex: 1;
+    padding: 0.52vw 1.25vw;
+    border-radius: 5.21vw;
+    border: 0.05vw solid rgba(255, 255, 255, 0.3);
+    background: transparent;
+    color: #fff;
+    font-size: 0.73vw;
+    cursor: pointer;
 }

@@ -11,10 +11,11 @@
 
 .ProductsTable_table {
     width: 100%;
-    border-collapse: separate;
-    border-spacing: 0 1.04vw; /* 0 20px */
+    border-collapse: collapse;          /* было separate */
+    border-spacing: 0;                  /* убрали вертикальные gaps */
 }
 
+/* заголовок оставляем как был */
 .ProductsTable_thead {
     background-color: transparent;
 }
@@ -22,9 +23,9 @@
 .ProductsTable_th {
     padding: 0 0.52vw; /* 0 10px */
     text-align: left;
-    font-size: 0.63vw; /* 12px */
+    font-size: 0.85vw; /* 12px */
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.6);
+    color: white;
     letter-spacing: 0.05em;
     line-height: 110%;
     border-bottom: 0.05vw solid rgba(140, 140, 140, 1);
@@ -52,23 +53,29 @@
     background-color: transparent;
 }
 
+/* строки тела таблицы */
 .ProductsTable_row {
     background-color: transparent;
     transition: background-color 0.2s ease;
 }
 
-.ProductsTable_row_active {
-    background-color: rgba(205, 255, 255, 0.05);
-}
+
 
 .ProductsTable_td {
     padding: 1.04vw 0.52vw; /* 20px 10px */
-    font-size: 0.73vw; /* 14px */
+    font-size: 0.85vw; /* 14px */
     font-weight: 400;
     color: var(--clr-white);
     line-height: 110%;
     letter-spacing: -0.03em;
     vertical-align: middle;
+
+    border-bottom: 0.05vw solid rgba(255, 255, 255, 0.12); /* белый разделитель */
+}
+
+/* можно чуть усилить последний разделитель, если нужно */
+.ProductsTable_tbody tr:last-child .ProductsTable_td {
+    border-bottom-color: rgba(255, 255, 255, 0.2);
 }
 
 .ProductsTable_td_checkbox {
@@ -85,7 +92,75 @@
     cursor: pointer;
 }
 
-/* TOGGLE SWITCH */
+/* ===== НАЗВАНИЕ ТОВАРА + ТРИ ТОЧКИ ===== */
+
+.ProductsTable_name-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* текст слева, точки справа */
+    gap: 0.52vw;
+    position: relative; /* для контекстного меню */
+}
+
+.ProductsTable_name {
+    font-size: 0.85vw;
+    color: #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* кнопка с тремя точками (иконка pointer) */
+.ProductsTable_more-btn {
+    width: 1.25vw;
+    height: 1.25vw;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    cursor: pointer;
+}
+
+.ProductsTable_more-btn img {
+    width: 0.63vw;
+    height: 0.63vw;
+    object-fit: contain;
+}
+
+/* маленькая модалка-меню */
+.ProductsTable_context {
+    position: absolute;
+    top: 1.7vw;      /* чуть ниже строки */
+    right: 0;
+    background: #ffffff;
+    color: #111111;
+    border-radius: 0.36vw;
+    box-shadow: 0 0.42vw 1.25vw rgba(0, 0, 0, 0.4);
+    padding: 0.21vw 0;
+    display: flex;
+    flex-direction: column;
+    min-width: 7.5vw;
+    z-index: 10;
+}
+
+.ProductsTable_context button {
+    background: transparent;
+    border: none;
+    padding: 0.42vw 0.83vw;
+    text-align: left;
+    font-size: 0.73vw;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.ProductsTable_context button:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+/* ===== TOGGLE SWITCH ===== */
 .ProductsTable_toggle {
     display: flex;
     align-items: center;
@@ -111,7 +186,7 @@
     position: absolute;
     width: 0.83vw; /* 16px */
     height: 0.83vw;
-    background-color: rgba(140, 140, 140, 1);
+    background-color: black;
     border-radius: 50%;
     top: 0.10vw; /* 2px */
     left: 0.10vw;
@@ -119,16 +194,16 @@
 }
 
 .ProductsTable_toggle_input:checked + .ProductsTable_toggle_slider {
-    background-color: rgba(205, 255, 255, 0.3);
+    background-color: rgba(205, 255, 255, 1);
 }
 
 .ProductsTable_toggle_input:checked + .ProductsTable_toggle_slider::before {
-    background-color: rgba(205, 255, 255, 1);
+    background-color: black;
     transform: translateX(1.04vw); /* 20px */
 }
 
 .ProductsTable_toggle_label {
-    font-size: 0.73vw; /* 14px */
+    font-size: 0.85vw; /* 14px */
     font-weight: 400;
     color: var(--clr-white);
 }
