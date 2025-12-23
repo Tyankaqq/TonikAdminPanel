@@ -1,46 +1,82 @@
 /* src/components/Layout/Layout.css */
+
+/* ========================================
+   DESKTOP - Автоматическое масштабирование через vw
+======================================== */
 .Layout {
     min-height: 100vh;
     background-color: var(--clr-bg);
+    width: 100%;
 }
 
 .Layout_container {
     display: flex;
     position: relative;
-
+    max-width: 89.58vw; /* 1720px / 1920px * 100 */
     margin: 0 auto;
-    gap: 1.04vw;
+    gap: 1.04vw; /* 20px */
+    width: calc(100% - 2.08vw); /* отступы по 40px */
+    margin: 0 auto;
 }
 
 .Layout_main {
     flex: 1;
-    padding: 2.08vw 0;
-    min-height: calc(100vh - 4.38vw);
+    padding: 2.08vw 0; /* 40px 0 */
+    min-height: calc(100vh - 4.38vw); /* учитываем высоту Header */
+    width: 100%;
 }
 
+/* Section - авто-масштабирование контента */
+
+
+/* ========================================
+   TABLET (768px - 1024px)
+======================================== */
 @media (min-width: 768px) and (max-width: 1024px) {
     .Layout_container {
+
+        /* margin: 0; */
         flex-direction: column;
-        gap: 2.60vw; /* 20px / 768px * 100 */
-        padding: 2.60vw; /* 20px padding */
-        padding-bottom: 10.42vw; /* 80px для Sidebar внизу */
+        gap: 20px;
+        padding: 2vw 1.57vw;
+        padding-bottom: 80px;
+        max-width: 100% !important;
     }
 
     .Layout_main {
         padding: 0;
         min-height: auto;
     }
+
+    /* Section для планшетов */
+    .Layout_main section,
+    .Layout_main > div {
+        width: 100%;
+        margin: 0 auto;
+    }
 }
 
+/* ========================================
+   MOBILE (max-width: 767px)
+======================================== */
 @media (max-width: 767px) {
     .Layout_container {
         flex-direction: column;
         gap: 0;
+        padding: 0 1vw;
+        padding-bottom: 100px; /* для Sidebar внизу */
+        max-width: 100% ;
     }
 
     .Layout_main {
-        padding: 5.56vw; /* 20px / 360px * 100 */
-        padding-bottom: 27.78vw; /* 100px для Sidebar внизу */
+        padding: 20px 0;
         min-height: auto;
+    }
+
+    /* Section для мобилок */
+    .Layout_main section,
+    .Layout_main > div {
+        width: 100%;
+        margin: 0 auto;
     }
 }

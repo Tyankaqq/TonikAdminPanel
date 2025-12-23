@@ -1,6 +1,6 @@
 /* src/components/Sidebar/Sidebar.css */
 .Sidebar {
-
+    width: 14.42vw;
     height: 43.5417vw; /* 836px */
     background-color: var(--clr-dark-brown);
     position: sticky;

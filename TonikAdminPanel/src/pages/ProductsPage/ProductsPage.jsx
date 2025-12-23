@@ -1,6 +1,5 @@
 // src/pages/Products/ProductsPage.jsx
 import React, { useState } from 'react';
-import './ProductsPage.css';
 
 import CategoryTabs from '../../components/CategoryTabs/CategoryTabs';
 import ProductsTable from '../../components/ProductsTable/ProductsTable';
@@ -11,10 +10,11 @@ import PointerIcon from '../../assets/icons/pointer.png';
 import DeleteIcon from '../../assets/icons/delete.png';
 import GalochkaIcon from '../../assets/icons/BlackGalochka.png';
 import Export from '../../assets/icons/export.png';
+import Filter from '../../assets/icons/filter.png';
 import CalendarIcon from '../../assets/icons/blackdate.png';
 
 import ProductPhoto from '../../assets/images/ProductPhoto.jpg';
-
+import './ProductsPage.css';
 const ProductsPage = () => {
     // Фильтры
     const [searchValue, setSearchValue] = useState('');
@@ -374,7 +374,7 @@ const ProductsPage = () => {
                                     </svg>
                                     <input
                                         type="text"
-                                        placeholder="Поиск по названию или ID"
+                                        placeholder="Поиск товара"
                                         className="ProductsPage_search_input"
                                         value={searchValue}
                                         onChange={handleSearchChange}
@@ -401,7 +401,7 @@ const ProductsPage = () => {
                             <div className="ProductsPage_filters-wrap">
                                 <button className="ProductsPage_filters" onClick={openFilters}>
                                     Фильтры
-                                    <img src={GalochkaIcon} alt="" />
+                                    <img src={Filter} alt="" />
                                 </button>
 
                                 {isFiltersOpen && (

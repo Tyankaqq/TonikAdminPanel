@@ -1,36 +1,31 @@
 /* src/pages/Dashboard/DashboardPage.css */
 
-/* ============================================ */
-/* ДЕСКТОП ВЕРСИЯ (1025px и выше)              */
-/* ============================================ */
-.Dashboard_desktop {
+/* ========================================
+   DESKTOP - Автоматическое масштабирование через vw
+======================================== */
+.Dashboard {
     width: 100%;
-    display: flex;
-    gap: 1.0417vw; /* 20px */
-}
-
-.Dashboard_sidebar {
-    width: 21.6146vw; /* 415px */
-    display: flex;
-    flex-direction: column;
-    gap: 1.0417vw; /* 20px */
-    flex-shrink: 0;
+    display: grid;
+    grid-template-columns: 1fr 21.6146vw; /* Контент + сайдбар */
+    gap: 1.0417vw;
 }
 
 .Dashboard_main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 1.0417vw; /* 20px */
+    display: grid;
+    grid-template-rows: auto 1fr; /* Графики + таблица */
+    gap: 1.0417vw;
 }
 
-.Dashboard_row {
-    display: flex;
-    gap: 1.0417vw; /* 20px */
+.Dashboard_charts {
+    display: grid;
+    grid-template-columns: 1fr auto; /* График доходов растягивается, круговая фиксированная */
+    gap: 1.0417vw;
 }
 
-.Dashboard_table {
-    width: 100%;
+.Dashboard_sidebar {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr); /* 4 карточки равной высоты */
+    gap: 1.0417vw;
 }
 
 /* Скрываем планшетную версию на десктопе */
@@ -38,12 +33,12 @@
     display: none;
 }
 
-/* ============================================ */
-/* ПЛАНШЕТ (768px - 1024px)                    */
-/* ============================================ */
+/* ========================================
+   TABLET (768px - 1024px)
+======================================== */
 @media (min-width: 768px) and (max-width: 1024px) {
     /* Скрываем десктоп версию */
-    .Dashboard_desktop {
+    .Dashboard {
         display: none;
     }
 
@@ -51,69 +46,67 @@
     .Dashboard_tablet {
         display: flex;
         flex-direction: column;
-        gap: 1.3vw; /* 20px / 768px * 100 */
+        gap: 1.3vw;
         width: 100%;
     }
 
-    /* 1. График доход/просмотры - 728x387px */
     .Dashboard_tablet_revenue {
         width: 100%;
-        height: 50.39vw; /* 387px / 768px * 100 */
+        height: 50.39vw;
         overflow: hidden;
     }
 
-    /* 2. Средний блок - 2 колонки */
     .Dashboard_tablet_middle {
         display: flex;
-        gap: 1.3vw; /* 20px */
+        gap: 1.3vw;
         width: 100%;
     }
 
-    /* ЛЕВАЯ КОЛОНКА - График + Заказы */
     .Dashboard_tablet_left {
         flex: 1;
         display: flex;
         flex-direction: column;
-        gap: 1.3vw; /* 20px */
+        gap: 1.3vw;
     }
 
     .Dashboard_tablet_category {
         width: 100%;
-        height: 41vw; /* 316px / 768px * 100 */
+        height: 41vw;
         overflow: hidden;
     }
 
     .Dashboard_tablet_orders {
         width: 100%;
-        height: 19.92vw; /* 153px / 768px * 100 */
+        height: 19.92vw;
         overflow: hidden;
     }
 
-    /* ПРАВАЯ КОЛОНКА - 3 карточки в столбик */
     .Dashboard_tablet_right {
         flex: 1;
         display: flex;
         flex-direction: column;
-        gap: 1.3vw; /* 20px */
+        gap: 1.3vw;
     }
 
     .Dashboard_tablet_right > * {
         width: 100%;
-        height: 19.92vw; /* 153px / 768px * 100 */
+        height: 19.92vw;
         overflow: hidden;
     }
 
-    /* 3. Таблица 10 лучших товаров - 728x460px */
     .Dashboard_tablet_table {
         width: 100%;
-        height: 64.90vw; /* 460px / 768px * 100 */
+        height: 64.90vw;
         overflow: hidden;
     }
 }
 
+/* ========================================
+   MOBILE (max-width: 767px)
+======================================== */
 @media (max-width: 767px) {
     /* Скрываем десктоп версию */
-    .Dashboard_desktop {
+    .Dashboard {
         display: none;
     }
 
@@ -121,7 +114,7 @@
     .Dashboard_tablet {
         display: flex !important;
         flex-direction: column !important;
-        gap: 2.78vw; /* 10px / 360px * 100 */
+        gap: 2.78vw;
         width: 100%;
     }
 
@@ -131,11 +124,10 @@
         height: auto;
     }
 
-    /* На мобилке всё в одну колонку */
     .Dashboard_tablet_middle {
         display: flex !important;
         flex-direction: column !important;
-        gap: 2.78vw; /* 10px */
+        gap: 2.78vw;
         width: 100%;
     }
 
@@ -144,7 +136,7 @@
         width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 2.78vw; /* 10px */
+        gap: 2.78vw;
     }
 
     .Dashboard_tablet_category,

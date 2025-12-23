@@ -48,3 +48,196 @@
     background-color: rgba(205, 255, 255, 1);
     color: rgba(0, 0, 0, 1);
 }
+/* ========================================
+   TABLET (768px - 1024px)
+======================================== */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .CategoryTabs {
+        display: flex;
+        gap: 2.2vw; /* 16px */
+        margin-bottom: 2.75vw; /* 20px */
+        flex-wrap: nowrap; /* убираем перенос */
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-behavior: smooth;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
+        padding-bottom: 0.55vw; /* для border-bottom */
+    }
+
+    /* Скрываем scrollbar */
+    .CategoryTabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .CategoryTabs_tab {
+        display: flex;
+        align-items: center;
+        gap: 0.82vw; /* 6px */
+        padding: 1.37vw 0; /* 10px 0 */
+        background: transparent;
+        border: none;
+        border-bottom: 0.27vw solid transparent;
+        font-size: 1.92vw; /* 14px */
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.6);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        white-space: nowrap; /* текст в одну строку */
+        flex-shrink: 0; /* не сжимаются */
+        letter-spacing: -0.03em;
+        line-height: 110%;
+    }
+
+    .CategoryTabs_tab:hover {
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .CategoryTabs_tab_active {
+        color: var(--clr-white);
+        border-bottom-color: rgba(205, 255, 255, 1);
+    }
+
+    .CategoryTabs_badge {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 4.12vw; /* 30px */
+        height: 2.47vw; /* 18px */
+        padding: 0 1.1vw; /* 0 8px */
+        background-color: rgba(64, 64, 64, 1);
+        border-radius: 1.37vw; /* 10px */
+        font-size: 1.65vw; /* 12px */
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.6);
+        letter-spacing: -0.03em;
+    }
+
+    .CategoryTabs_tab_active .CategoryTabs_badge {
+        background-color: rgba(205, 255, 255, 1);
+        color: rgba(0, 0, 0, 1);
+    }
+
+    /* Дополнительно: плавная прокрутка при клике */
+    .CategoryTabs_tab:focus {
+        outline: none;
+    }
+
+    /* Опционально: индикатор что можно скроллить */
+    .CategoryTabs::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 5.49vw; /* 40px */
+        background: linear-gradient(to right, transparent, rgba(30, 13, 13, 0.8));
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    /* Показываем градиент если есть скролл */
+    .CategoryTabs[data-has-scroll="true"]::after {
+        opacity: 1;
+    }
+}
+/* ========================================
+   MOBILE (max-width: 767px) - CategoryTabs Slider
+======================================== */
+@media (max-width: 767px) {
+    .CategoryTabs {
+        display: flex;
+        gap: 2.5vw; /* 8px */
+        margin-bottom: 5vw; /* 16px */
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-behavior: smooth;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
+        padding-bottom: 1.25vw; /* для border-bottom */
+        position: relative;
+    }
+
+    /* Скрываем scrollbar */
+    .CategoryTabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .CategoryTabs_tab {
+        display: flex;
+        align-items: center;
+        gap: 0.94vw; /* 3px */
+        padding: 2.5vw 0; /* 8px 0 */
+        background: transparent;
+        border: none;
+        border-bottom: 0.625vw solid transparent; /* 2px */
+        font-size: 4.375vw; /* 14px */
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.6);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        white-space: nowrap; /* текст в одну строку */
+        flex-shrink: 0; /* не сжимаются */
+        letter-spacing: -0.03em;
+        line-height: 110%;
+
+    }
+
+    .CategoryTabs_tab:hover {
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .CategoryTabs_tab_active {
+        color: var(--clr-white);
+        border-bottom-color: rgba(205, 255, 255, 1);
+    }
+
+    /* Badge - счётчик */
+    .CategoryTabs_badge {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 8.75vw; /* 28px */
+        height: 3.438vw; /* 11px */
+        padding: 0 1.563vw; /* 0 5px */
+        background-color: rgba(99, 99, 99, 1);
+        border-radius: 31.25vw; /* 100px - круглый */
+        font-size: 3.125vw; /* 10px */
+        font-weight: 400;
+        color: rgba(255, 255, 255, 1);
+        letter-spacing: -0.03em;
+        line-height: 110%;
+    }
+
+    .CategoryTabs_tab_active .CategoryTabs_badge {
+        background-color: rgba(205, 255, 255, 1);
+        color: rgba(0, 0, 0, 1);
+    }
+
+    /* Убираем фокус outline */
+    .CategoryTabs_tab:focus {
+        outline: none;
+    }
+
+    /* Опционально: градиент-индикатор справа */
+    .CategoryTabs::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 12.5vw; /* 40px */
+        background: linear-gradient(to right, transparent, rgba(30, 13, 13, 0.9));
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 1;
+    }
+
+    /* Показываем градиент если есть скролл */
+    .CategoryTabs[data-has-scroll="true"]::after {
+        opacity: 1;
+    }
+}

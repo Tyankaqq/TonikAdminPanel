@@ -14,13 +14,14 @@
     height: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .Header_logo {
     display: flex;
     align-items: center;
     gap: 0.52vw;
-    margin-right: 8.91vw;
+    margin-right: 9.5vw;
 }
 
 .Header_logo_img {
@@ -109,8 +110,8 @@
 }
 
 .Header_date_arrow {
-    width: 0.63vw;
-    height: 0.42vw;
+    width: 1.63vw;
+    height: 1.42vw;
     object-fit: contain;
     flex-shrink: 0;
     transition: transform 0.3s ease;
@@ -282,13 +283,13 @@
     }
 
     .Header_logo {
-        margin-right: 44.30vw;
+        margin-right: 50.6vw;
         gap: 0;
         order: 1;
     }
 
     .Header_logo_img {
-        width: 15.49vw;
+        width: 9.9vw;
         height: 7.03vw;
     }
 
@@ -446,7 +447,7 @@
     }
 
     .Header_logo {
-        margin-right: 44.17vw; /* 159px / 360px * 100 */
+        margin-right: 42.17vw; /* 159px / 360px * 100 */
         gap: 0;
         order: 1;
     }

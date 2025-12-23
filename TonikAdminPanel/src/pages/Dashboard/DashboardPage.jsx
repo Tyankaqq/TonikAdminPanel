@@ -44,17 +44,14 @@ const DashboardPage = () => {
 
     return (
         <>
-            {/* ДЕСКТОП ВЕРСИЯ */}
-            <div className="Dashboard Dashboard_desktop">
+            {/* ДЕСКТОП ВЕРСИЯ - ИСПРАВЛЕНО */}
+            <div className="Dashboard">
                 <div className="Dashboard_main">
-                    <div className="Dashboard_row">
+                    <div className="Dashboard_charts">
                         <RevenueChart />
                         <CategoryPieChart />
                     </div>
-
-                    <div className="Dashboard_table">
-                        <TopProductsTable />
-                    </div>
+                    <TopProductsTable />
                 </div>
 
                 <div className="Dashboard_sidebar">
@@ -71,16 +68,13 @@ const DashboardPage = () => {
                 </div>
             </div>
 
-            {/* ПЛАНШЕТ/МОБИЛКА ВЕРСИЯ */}
-            <div className="Dashboard Dashboard_tablet">
-                {/* 1. График доход/просмотры - ПЕРВЫЙ */}
+            {/* ПЛАНШЕТ/МОБИЛКА ВЕРСИЯ - НЕ ТРОГАЕМ */}
+            <div className="Dashboard_tablet">
                 <div className="Dashboard_tablet_revenue">
                     <RevenueChart />
                 </div>
 
-                {/* 2. Блок с графиком категорий и карточками */}
                 <div className="Dashboard_tablet_middle">
-                    {/* ЛЕВАЯ КОЛОНКА - График категорий + Общий объем заказов */}
                     <div className="Dashboard_tablet_left">
                         <div className="Dashboard_tablet_category">
                             <CategoryPieChart />
@@ -96,9 +90,7 @@ const DashboardPage = () => {
                         </div>
                     </div>
 
-                    {/* ПРАВАЯ КОЛОНКА - 3 карточки в столбик */}
                     <div className="Dashboard_tablet_right">
-                        {/* Общий объем продаж */}
                         <StatCard
                             title={statsData[0].title}
                             value={statsData[0].value}
@@ -106,7 +98,6 @@ const DashboardPage = () => {
                             isPositive={statsData[0].isPositive}
                             description={statsData[0].description}
                         />
-                        {/* Общий объем выручки */}
                         <StatCard
                             title={statsData[1].title}
                             value={statsData[1].value}
@@ -114,7 +105,6 @@ const DashboardPage = () => {
                             isPositive={statsData[1].isPositive}
                             description={statsData[1].description}
                         />
-                        {/* Общее количество посетителей */}
                         <StatCard
                             title={statsData[3].title}
                             value={statsData[3].value}
@@ -125,7 +115,6 @@ const DashboardPage = () => {
                     </div>
                 </div>
 
-                {/* 3. Таблица 10 лучших товаров */}
                 <div className="Dashboard_tablet_table">
                     <TopProductsTable />
                 </div>
