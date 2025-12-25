@@ -5,6 +5,7 @@ import Layout from './components/Layout/Layout';
 import DashboardPage from './pages/Dashboard/DashboardPage.jsx';
 import ProductsPage from './pages/ProductsPage/ProductsPage.jsx';
 import './App.css';
+import ArticlesPage from "./pages/ArticlePage/ArticlesPage.jsx";
 
 function App() {
     return (
@@ -14,8 +15,8 @@ function App() {
                     <Route index element={<Navigate to="/dashboard" replace />} />
                     <Route path="dashboard" element={<DashboardPage />} />
                     <Route path="products" element={<ProductsPage />} />
-                    <Route path="content" element={<div>Content Page</div>} />
-                    <Route path="promotion" element={<div>Promotion Page</div>} />
+                    <Route path="content" element={<ArticlesPage/>} />
+                    <Route path="promotion" element={<div>Promotion</div>} />
                 </Route>
             </Routes>
         </Router>

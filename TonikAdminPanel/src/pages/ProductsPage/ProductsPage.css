@@ -163,6 +163,7 @@
     border-radius: 0.36vw;
     display: flex;
     align-items: center;
+    flex-direction: row-reverse;
     gap: 0.52vw;
     padding: 0 1.04vw;
     transition: border-radius 0.2s ease;

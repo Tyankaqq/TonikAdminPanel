@@ -1,0 +1,239 @@
+/* src/components/ArticleTabs/ArticleTabs.css */
+
+/* ========================================
+   DESKTOP
+======================================== */
+.ArticleTabs {
+    display: flex;
+    gap: 0.78vw; /* 15px */
+    margin-bottom: 1.04vw; /* 20px */
+    flex-wrap: wrap;
+}
+
+.ArticleTabs_tab {
+    display: flex;
+    align-items: center;
+    gap: 0.16vw; /* 3px */
+    padding: 0.52vw 0; /* 10px 0 */
+    background: transparent;
+    border: none;
+    border-bottom: 0.16vw solid transparent;
+    font-size: 0.73vw; /* 14px */
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.ArticleTabs_tab:hover {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.ArticleTabs_tab_active {
+    color: var(--clr-white);
+    border-bottom-color: rgba(205, 255, 255, 1);
+}
+
+.ArticleTabs_badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.56vw; /* 30px */
+    height: 0.94vw; /* 18px */
+    padding: 0 0.31vw; /* 0 6px */
+    background-color: rgba(64, 64, 64, 1);
+    border-radius: 0.52vw; /* 10px */
+    font-size: 0.63vw; /* 12px */
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.ArticleTabs_tab_active .ArticleTabs_badge {
+    background-color: rgba(205, 255, 255, 1);
+    color: rgba(0, 0, 0, 1);
+}
+
+/* ========================================
+   TABLET (768px - 1024px)
+======================================== */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .ArticleTabs {
+        display: flex;
+        gap: 2.2vw; /* 16px */
+        margin-bottom: 2.75vw; /* 20px */
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding-bottom: 0.55vw;
+    }
+
+    .ArticleTabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .ArticleTabs_tab {
+        display: flex;
+        align-items: center;
+        gap: 0.82vw; /* 6px */
+        padding: 1.37vw 0; /* 10px 0 */
+        background: transparent;
+        border: none;
+        border-bottom: 0.27vw solid transparent;
+        font-size: 1.92vw; /* 14px */
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.6);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+        flex-shrink: 0;
+        letter-spacing: -0.03em;
+        line-height: 110%;
+    }
+
+    .ArticleTabs_tab:hover {
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .ArticleTabs_tab_active {
+        color: var(--clr-white);
+        border-bottom-color: rgba(205, 255, 255, 1);
+    }
+
+    .ArticleTabs_badge {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 4.12vw; /* 30px */
+        height: 2.47vw; /* 18px */
+        padding: 0 1.1vw; /* 0 8px */
+        background-color: rgba(64, 64, 64, 1);
+        border-radius: 1.37vw; /* 10px */
+        font-size: 1.65vw; /* 12px */
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.6);
+        letter-spacing: -0.03em;
+    }
+
+    .ArticleTabs_tab_active .ArticleTabs_badge {
+        background-color: rgba(205, 255, 255, 1);
+        color: rgba(0, 0, 0, 1);
+    }
+
+    .ArticleTabs_tab:focus {
+        outline: none;
+    }
+
+    .ArticleTabs::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 5.49vw;
+        background: linear-gradient(to right, transparent, rgba(30, 13, 13, 0.8));
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .ArticleTabs[data-has-scroll="true"]::after {
+        opacity: 1;
+    }
+}
+
+/* ========================================
+   MOBILE (max-width: 767px)
+======================================== */
+@media (max-width: 767px) {
+    .ArticleTabs {
+        display: flex;
+        gap: 2.5vw; /* 8px */
+        margin-bottom: 5vw; /* 16px */
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding-bottom: 1.25vw;
+        position: relative;
+    }
+
+    .ArticleTabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .ArticleTabs_tab {
+        display: flex;
+        align-items: center;
+        gap: 0.94vw; /* 3px */
+        padding: 2.5vw 0; /* 8px 0 */
+        background: transparent;
+        border: none;
+        border-bottom: 0.625vw solid transparent; /* 2px */
+        font-size: 4.375vw; /* 14px */
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.6);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+        flex-shrink: 0;
+        letter-spacing: -0.03em;
+        line-height: 110%;
+    }
+
+    .ArticleTabs_tab:hover {
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .ArticleTabs_tab_active {
+        color: var(--clr-white);
+        border-bottom-color: rgba(205, 255, 255, 1);
+    }
+
+    .ArticleTabs_badge {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 8.75vw; /* 28px */
+        height: 3.438vw; /* 11px */
+        padding: 0 1.563vw; /* 0 5px */
+        background-color: rgba(99, 99, 99, 1);
+        border-radius: 31.25vw; /* 100px */
+        font-size: 3.125vw; /* 10px */
+        font-weight: 400;
+        color: rgba(255, 255, 255, 1);
+        letter-spacing: -0.03em;
+        line-height: 110%;
+    }
+
+    .ArticleTabs_tab_active .ArticleTabs_badge {
+        background-color: rgba(205, 255, 255, 1);
+        color: rgba(0, 0, 0, 1);
+    }
+
+    .ArticleTabs_tab:focus {
+        outline: none;
+    }
+
+    .ArticleTabs::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 12.5vw;
+        background: linear-gradient(to right, transparent, rgba(30, 13, 13, 0.9));
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 1;
+    }
+
+    .ArticleTabs[data-has-scroll="true"]::after {
+        opacity: 1;
+    }
+}

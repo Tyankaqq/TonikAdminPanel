@@ -2,7 +2,7 @@
 import React, { useState, useMemo } from 'react';
 import './ProductsTable.css';
 import Pagination from '../Pagination/Pagination';
-import PointerIcon from '../../assets/icons/pointer.png';
+import PointerIcon from '../../assets/icons/pointer.svg';
 import GalochkaIcon from '../../assets/icons/WhiteGalochka.png';
 
 const ProductsTable = ({
@@ -14,15 +14,18 @@ const ProductsTable = ({
                            priceMin = 0,
                            priceMax = 100000,
                            onProductPreview,
+                           onProductEdit,
                            allProducts = []
                        }) => {
     const [selectedProducts, setSelectedProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [openMenuId, setOpenMenuId] = useState(null);
 
+    const ITEMS_PER_PAGE = 10; // Товаров на странице
+
     // Сортировка
     const [sortField, setSortField] = useState(null);
-    const [sortDirection, setSortDirection] = useState('asc'); // 'asc' или 'desc'
+    const [sortDirection, setSortDirection] = useState('asc');
 
     // Функция нормализации для поиска
     const normalize = (str) => str.toLowerCase().trim();
@@ -82,21 +85,30 @@ const ProductsTable = ({
         return sorted;
     }, [filteredProducts, sortField, sortDirection]);
 
+    // Пагинация - товары для текущей страницы
+    const paginatedProducts = useMemo(() => {
+        const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+        const endIndex = startIndex + ITEMS_PER_PAGE;
+        return sortedProducts.slice(startIndex, endIndex);
+    }, [sortedProducts, currentPage]);
+
+    // Общее количество страниц
+    const totalPages = Math.ceil(sortedProducts.length / ITEMS_PER_PAGE);
+
     // Обработчик клика на заголовок колонки
     const handleSort = (field) => {
         if (sortField === field) {
-            // Если кликнули на ту же колонку - меняем направление
             setSortDirection(prev => prev === 'asc' ? 'desc' : 'asc');
         } else {
-            // Новая колонка - сортируем по возрастанию
             setSortField(field);
             setSortDirection('asc');
         }
+        setCurrentPage(1); // Сброс на первую страницу при сортировке
     };
 
     const handleSelectAll = (e) => {
         if (e.target.checked) {
-            setSelectedProducts(sortedProducts.map(p => p.id));
+            setSelectedProducts(paginatedProducts.map(p => p.id));
         } else {
             setSelectedProducts([]);
         }
@@ -129,6 +141,18 @@ const ProductsTable = ({
         if (onProductPreview) {
             onProductPreview(productId);
         }
+    };
+
+    const handleEditClick = (productId) => {
+        setOpenMenuId(null);
+        if (onProductEdit) {
+            onProductEdit(productId);
+        }
+    };
+
+    const handlePageChange = (page) => {
+        setCurrentPage(page);
+        setOpenMenuId(null); // Закрываем открытое меню при смене страницы
     };
 
     const formatPrice = (price) => {
@@ -171,7 +195,7 @@ const ProductsTable = ({
                         <th className="ProductsTable_th ProductsTable_th_checkbox">
                             <input
                                 type="checkbox"
-                                checked={sortedProducts.length > 0 && selectedProducts.length === sortedProducts.length}
+                                checked={paginatedProducts.length > 0 && selectedProducts.length === paginatedProducts.length}
                                 onChange={handleSelectAll}
                                 className="ProductsTable_checkbox"
                             />
@@ -229,14 +253,14 @@ const ProductsTable = ({
                     </thead>
 
                     <tbody className="ProductsTable_tbody">
-                    {sortedProducts.length === 0 ? (
+                    {paginatedProducts.length === 0 ? (
                         <tr>
                             <td colSpan="8" style={{ textAlign: 'center', padding: '2vw', color: 'rgba(255,255,255,0.4)' }}>
                                 Товары не найдены
                             </td>
                         </tr>
                     ) : (
-                        sortedProducts.map((product) => (
+                        paginatedProducts.map((product) => (
                             <tr
                                 key={product.id}
                                 className={`ProductsTable_row ${product.active ? 'ProductsTable_row_active' : ''}`}
@@ -275,7 +299,12 @@ const ProductsTable = ({
                                                 >
                                                     Предпросмотр
                                                 </button>
-                                                <button type="button">Редактировать</button>
+                                                <button
+                                                    type="button"
+                                                    onClick={() => handleEditClick(product.id)}
+                                                >
+                                                    Редактировать
+                                                </button>
                                                 <button type="button">Удалить</button>
                                             </div>
                                         )}
@@ -314,8 +343,8 @@ const ProductsTable = ({
             <div className="ProductsTable_footer">
                 <Pagination
                     currentPage={currentPage}
-                    totalPages={Math.ceil(sortedProducts.length / 10)}
-                    onPageChange={setCurrentPage}
+                    totalPages={totalPages}
+                    onPageChange={handlePageChange}
                 />
             </div>
         </div>

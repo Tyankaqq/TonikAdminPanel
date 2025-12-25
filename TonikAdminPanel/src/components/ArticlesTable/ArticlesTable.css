@@ -1,0 +1,310 @@
+/* src/components/ArticlesTable/ArticlesTable.css */
+
+/* ========================================
+   DESKTOP - Основные стили
+======================================== */
+.ArticlesTable {
+    width: 100%;
+}
+
+.ArticlesTable_wrapper {
+    width: 100%;
+    overflow-x: auto;
+    margin-bottom: 1.56vw;
+}
+
+.ArticlesTable_table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ArticlesTable_table thead {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ArticlesTable_th {
+    padding: 0.78vw 1.04vw;
+    text-align: left;
+    font-size: 0.85vw;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--clr-white);
+}
+
+.ArticlesTable_th--checkbox {
+    width: 3vw;
+}
+
+.ArticlesTable_th--title {
+    width: auto;
+}
+
+.ArticlesTable_th--category {
+    width: 15vw;
+}
+
+.ArticlesTable_th--date {
+    width: 15vw;
+}
+
+.ArticlesTable_th--status {
+    width: 18vw;
+}
+
+.ArticlesTable_th_content {
+    display: flex;
+    align-items: center;
+    gap: 0.52vw;
+}
+
+.ArticlesTable_sort {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    opacity: 0.4;
+    transition: opacity 0.3s ease;
+}
+
+.ArticlesTable_sort:hover {
+    opacity: 1;
+}
+
+.ArticlesTable_sort img {
+    width: 0.73vw;
+    height: 0.73vw;
+}
+
+.ArticlesTable_row {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background-color 0.3s ease;
+}
+
+.ArticlesTable_row:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.ArticlesTable_table td {
+    padding: 0.78vw 1.04vw;
+    font-size: 0.85vw;
+    font-weight: 400;
+    color: var(--clr-white);
+}
+
+.ArticlesTable_checkbox {
+    width: 1.04vw;
+    height: 1.04vw;
+    cursor: pointer;
+    accent-color: var(--clr-accent-blue);
+}
+
+/* Title cell with pointer */
+.ArticlesTable_title_cell {
+    display: flex;
+    align-items: center;
+    gap: 7.97vw; /* 153px at 1920px */
+}
+
+.ArticlesTable_pointer {
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: opacity 0.3s ease;
+}
+
+.ArticlesTable_pointer:hover {
+    opacity: 1;
+}
+
+.ArticlesTable_pointer img {
+    width: 1.21vw; /* 4px */
+    height: 0.83vw; /* 16px */
+}
+
+/* TOGGLE */
+.ArticlesTable_toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.52vw;
+    cursor: pointer;
+}
+
+.ArticlesTable_toggle input {
+    display: none;
+}
+
+.ArticlesTable_toggle_slider {
+    width: 2.60vw;
+    height: 1.30vw;
+    background-color: rgba(140, 140, 140, 1);
+    border-radius: 1.30vw;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.ArticlesTable_toggle_slider::before {
+    content: '';
+    position: absolute;
+    width: 1.04vw;
+    height: 1.04vw;
+    background-color: black;
+    border-radius: 50%;
+    top: 0.13vw;
+    left: 0.13vw;
+    transition: transform 0.3s ease;
+}
+
+.ArticlesTable_toggle input:checked + .ArticlesTable_toggle_slider {
+    background-color: rgba(205, 255, 255, 1)    ;
+}
+
+.ArticlesTable_toggle input:checked + .ArticlesTable_toggle_slider::before {
+    transform: translateX(1.30vw);
+}
+
+.ArticlesTable_toggle_text {
+    font-size: 0.83vw;
+    color: var(--clr-white);
+}
+
+/* ========================================
+   TABLET (768px - 1024px)
+======================================== */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .ArticlesTable_wrapper {
+        margin-bottom: 2.75vw;
+    }
+
+    .ArticlesTable_th {
+        padding: 1.65vw 2.2vw;
+        font-size: 1.92vw;
+    }
+
+    .ArticlesTable_th--checkbox {
+        width: 5.5vw;
+    }
+
+    .ArticlesTable_sort img {
+        width: 1.65vw;
+        height: 1.65vw;
+    }
+
+    .ArticlesTable_table td {
+        padding: 1.65vw 2.2vw;
+        font-size: 1.92vw;
+    }
+
+    .ArticlesTable_checkbox {
+        width: 2.47vw;
+        height: 2.47vw;
+    }
+
+    .ArticlesTable_title_cell {
+        gap: 21.02vw; /* 153px at 728px */
+    }
+
+    .ArticlesTable_pointer img {
+        width: 0.55vw;
+        height: 2.2vw;
+    }
+
+    .ArticlesTable_toggle {
+        gap: 1.1vw;
+    }
+
+    .ArticlesTable_toggle_slider {
+        width: 5.5vw;
+        height: 2.75vw;
+        border-radius: 2.75vw;
+    }
+
+    .ArticlesTable_toggle_slider::before {
+        width: 2.2vw;
+        height: 2.2vw;
+        top: 0.27vw;
+        left: 0.27vw;
+    }
+
+    .ArticlesTable_toggle input:checked + .ArticlesTable_toggle_slider::before {
+        transform: translateX(2.75vw);
+    }
+
+    .ArticlesTable_toggle_text {
+        font-size: 1.92vw;
+    }
+}
+
+/* ========================================
+   MOBILE (max-width: 767px)
+======================================== */
+@media (max-width: 767px) {
+    .ArticlesTable_wrapper {
+        margin-bottom: 5vw;
+    }
+
+    .ArticlesTable_th {
+        padding: 2.5vw 3.125vw;
+        font-size: 3.75vw;
+    }
+
+    .ArticlesTable_th--checkbox {
+        width: 10vw;
+    }
+
+    .ArticlesTable_sort img {
+        width: 3.125vw;
+        height: 3.125vw;
+    }
+
+    .ArticlesTable_table td {
+        padding: 2.5vw 3.125vw;
+        font-size: 4.375vw;
+    }
+
+    .ArticlesTable_checkbox {
+        width: 5vw;
+        height: 5vw;
+    }
+
+    .ArticlesTable_title_cell {
+        gap: 47.81vw; /* 153px at 320px */
+    }
+
+    .ArticlesTable_pointer img {
+        width: 1.25vw;
+        height: 5vw;
+    }
+
+    .ArticlesTable_toggle {
+        gap: 2.5vw;
+    }
+
+    .ArticlesTable_toggle_slider {
+        width: 11.25vw;
+        height: 5.625vw;
+        border-radius: 5.625vw;
+    }
+
+    .ArticlesTable_toggle_slider::before {
+        width: 4.375vw;
+        height: 4.375vw;
+        top: 0.625vw;
+        left: 0.625vw;
+    }
+
+    .ArticlesTable_toggle input:checked + .ArticlesTable_toggle_slider::before {
+        transform: translateX(5.625vw);
+    }
+
+    .ArticlesTable_toggle_text {
+        font-size: 4.375vw;
+    }
+}

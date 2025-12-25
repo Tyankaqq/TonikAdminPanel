@@ -1,0 +1,830 @@
+/* src/components/ArticleModal/ArticleModal.css */
+
+/* ========================================
+   DESKTOP
+======================================== */
+.ArticleModal_overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 90;
+}
+
+.ArticleModal_panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 50vw;
+    height: 100vh;
+    background: #170c0c;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    padding: 1.25vw 1.67vw;
+    box-shadow: -0.42vw 0 1.25vw rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+}
+
+.ArticleModal_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25vw;
+}
+
+.ArticleModal_header h2 {
+    font-size: 1.7vw;
+    font-weight: 400;
+    margin: 0;
+}
+
+.ArticleModal_close {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.04vw;
+    cursor: pointer;
+}
+
+.ArticleModal_body {
+    padding-bottom: 3vw;
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 0.42vw;
+}
+
+.ArticleModal_grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 1.25vw;
+    align-items: flex-start;
+}
+
+.ArticleModal_col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1vw;
+}
+
+.ArticleModal_block {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1vw;
+}
+
+.ArticleModal_block_title {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.85vw;
+    font-weight: 400;
+    margin: 0;
+}
+
+.ArticleModal_group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55vw;
+}
+
+.ArticleModal_group label {
+    font-size: 0.85vw;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.field-input,
+.field-textarea,
+.ArticleModal_upload {
+    background: rgba(64, 64, 64, 1);
+    border-radius: 0.42vw;
+    border: 0.05vw solid rgba(255, 255, 255, 0.12);
+    color: #fff;
+    font-size: 0.85vw;
+    padding: 0.42vw 0.63vw;
+    outline: none;
+}
+
+.field-input {
+    height: 2.08vw;
+}
+
+.field-textarea {
+    min-height: 6.25vw;
+    resize: vertical;
+}
+
+.field-textarea--description {
+    height: 11.93vw;
+    min-height: 11.93vw;
+    max-height: 11.93vw;
+    resize: none;
+    background: rgba(30, 13, 13, 1);
+    border-radius: 0.52vw;
+    border: 0.52vw solid rgba(64, 64, 64, 1);
+}
+
+.field-input::placeholder,
+.field-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.ArticleModal_upload {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 6.25vw;
+    text-align: center;
+    cursor: pointer;
+}
+
+.ArticleModal_upload--main {
+    height: 6.15vw;
+}
+
+.ArticleModal_upload_input {
+    display: none;
+}
+
+.ArticleModal_upload_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.52vw;
+}
+
+.ArticleModal_upload_content img {
+    width: 2.1vw;
+    height: 2.1vw;
+    object-fit: contain;
+}
+
+.ArticleModal_upload span {
+    font-size: 0.68vw;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.ArticleModal_upload span button {
+    background: none;
+    border: none;
+    color: #cdffff;
+    cursor: pointer;
+    padding: 0;
+    font-size: inherit;
+}
+
+.ArticleModal_photos_row {
+    margin-top: 0.3vw;
+    display: flex;
+    gap: 1.1vw;
+}
+
+.ArticleModal_photo_small {
+    position: relative;
+    flex: 0 0 auto;
+    width: 4.9vw;
+    height: 4.9vw;
+    border-radius: 0.42vw;
+    background: rgba(64, 64, 64, 1);
+    overflow: hidden;
+}
+
+.ArticleModal_photo_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ArticleModal_photo_actions {
+    position: absolute;
+    left: 0.42vw;
+    right: 0.42vw;
+    bottom: 0.42vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ArticleModal_icon-btn {
+    width: 1.04vw;
+    height: 1.04vw;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.ArticleModal_icon-btn img {
+    width: 0.63vw;
+    height: 0.63vw;
+    object-fit: contain;
+}
+
+.ArticleModal_select-wrapper {
+    position: relative;
+    cursor: pointer;
+}
+
+.ArticleModal_select {
+    height: 2.08vw;
+    border-radius: 0.42vw;
+    background: rgba(64, 64, 64, 1);
+    border: 0.05vw solid rgba(255, 255, 255, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0.63vw;
+    font-size: 0.85vw;
+    color: #fff;
+    font-weight: 400;
+}
+
+.ArticleModal_select:hover {
+    background: rgba(74, 74, 74, 1);
+}
+
+.ArticleModal_select img {
+    width: 1.25vw;
+    height: 1.25vw;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.ArticleModal_selected-text {
+    pointer-events: none;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ArticleModal_native {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    font-size: 0.85vw;
+    border: none;
+    background: transparent;
+}
+
+.ArticleModal_date {
+    height: 2.08vw;
+    border-radius: 0.42vw;
+    background: rgba(64, 64, 64, 1);
+    border: 0.05vw solid rgba(255, 255, 255, 0.12);
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    padding: 0 0.63vw;
+    gap: 0.42vw;
+    font-size: 0.85vw;
+    color: #fff;
+    position: relative;
+    cursor: pointer;
+}
+
+.ArticleModal_date:hover {
+    background: rgba(74, 74, 74, 1);
+}
+
+.ArticleModal_date span {
+    flex: 1;
+}
+
+.ArticleModal_date img {
+    width: 1.25vw;
+    height: 1.25vw;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.ArticleModal_date_input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.ArticleModal_date_input::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.ArticleModal_link_add {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 0.85vw;
+    cursor: pointer;
+    padding: 0;
+    align-self: flex-start;
+    text-decoration: underline;
+    text-underline-offset: 0.25vw;
+}
+
+.ArticleModal_additional {
+    margin-top: 1.25vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1vw;
+}
+
+.ArticleModal_section_title {
+    font-size: 1.1vw;
+    font-weight: 400;
+    color: white;
+    margin: 0 0 0.55vw 0;
+}
+
+.ArticleModal_footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.63vw;
+    padding-top: 0.83vw;
+    border-top: 0.05vw solid rgba(255, 255, 255, 0.12);
+}
+
+.ArticleModal_save {
+    flex: 1;
+    padding: 0.52vw 1.25vw;
+    border-radius: 5.21vw;
+    border: none;
+    background: #cdffff;
+    color: #111;
+    font-size: 0.73vw;
+    cursor: pointer;
+}
+
+.ArticleModal_cancel {
+    flex: 1;
+    padding: 0.52vw 1.25vw;
+    border-radius: 5.21vw;
+    border: 0.05vw solid rgba(255, 255, 255, 0.3);
+    background: transparent;
+    color: #fff;
+    font-size: 0.73vw;
+    cursor: pointer;
+}
+.ArticleModal_row--blocks {
+    align-items: flex-start;
+}
+
+.ArticleModal_row--blocks .ArticleModal_block {
+    flex: 1;
+}
+.ArticleModal_additional_row {
+     display: flex;
+     gap: 1.25vw;
+ }
+
+.ArticleModal_additional_block {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55vw;
+}
+.ArticleModal_subtitle{
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.75vw;
+    font-weight: 400;
+}
+/* ========================================
+   TABLET (768px - 1024px)
+======================================== */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .ArticleModal_panel {
+        width: 100vw;
+        padding: 4.12vw 2.49vw;
+        box-shadow: none;
+    }
+
+    .ArticleModal_header {
+        margin-bottom: 3.3vw;
+    }
+
+    .ArticleModal_header h2 {
+        font-size: 3.44vw;
+        letter-spacing: -0.03em;
+        line-height: 110%;
+    }
+
+    .ArticleModal_close {
+        font-size: 2.2vw;
+        padding: 1.1vw;
+    }
+
+    .ArticleModal_body {
+        padding-right: 1.37vw;
+    }
+
+    .ArticleModal_body::-webkit-scrollbar {
+        width: 1.1vw;
+    }
+
+    .ArticleModal_body::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .ArticleModal_body::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 0.55vw;
+    }
+
+    .ArticleModal_grid {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 1.3vw;
+    }
+
+    .ArticleModal_col {
+        gap: 2.75vw;
+    }
+
+    .ArticleModal_block {
+        gap: 1.1vw;
+    }
+
+    .ArticleModal_block_title {
+        font-size: 1.92vw;
+        letter-spacing: -0.03em;
+        line-height: 110%;
+    }
+
+    .ArticleModal_group {
+        gap: 1.1vw;
+    }
+
+    .ArticleModal_group label {
+        font-size: 1.92vw;
+        letter-spacing: -0.03em;
+        line-height: 110%;
+    }
+
+    .field-input,
+    .field-textarea,
+    .ArticleModal_upload {
+        border-radius: 0.96vw;
+        border: 0.14vw solid rgba(255, 255, 255, 0.12);
+        font-size: 1.92vw;
+        padding: 1.37vw 2.06vw;
+        letter-spacing: -0.03em;
+    }
+
+    .field-input {
+        height: 5.22vw;
+    }
+
+    .field-textarea {
+        min-height: 15.38vw;
+    }
+
+    .field-textarea--description {
+        height: 30.77vw;
+        min-height: 30.77vw;
+        max-height: 30.77vw;
+        border-radius: 1.1vw;
+        border: 1.1vw solid rgba(64, 64, 64, 1);
+        padding: 2.06vw;
+    }
+
+    .ArticleModal_upload {
+        height: 15.38vw;
+        flex-direction: column;
+    }
+
+    .ArticleModal_upload--main {
+        height: 15.38vw;
+    }
+
+    .ArticleModal_upload_content {
+        gap: 1.37vw;
+    }
+
+    .ArticleModal_upload_content img {
+        width: 4.95vw;
+        height: 4.95vw;
+    }
+
+    .ArticleModal_upload span {
+        font-size: 1.65vw;
+    }
+
+    .ArticleModal_photos_row {
+        margin-top: 1.37vw;
+        gap: 1.37vw;
+        flex-wrap: wrap;
+    }
+
+    .ArticleModal_photo_small {
+        width: 11.26vw;
+        height: 11.26vw;
+        border-radius: 0.96vw;
+    }
+
+    .ArticleModal_photo_actions {
+        left: 1.1vw;
+        right: 1.1vw;
+        bottom: 1.1vw;
+    }
+
+    .ArticleModal_icon-btn {
+        width: 2.75vw;
+        height: 2.75vw;
+    }
+
+    .ArticleModal_icon-btn img {
+        width: 1.65vw;
+        height: 1.65vw;
+    }
+
+    .ArticleModal_select,
+    .ArticleModal_date {
+        height: 5.22vw;
+        border-radius: 0.96vw;
+        border: 0.14vw solid rgba(255, 255, 255, 0.12);
+        padding: 0 2.06vw;
+        gap: 0.82vw;
+        font-size: 1.92vw;
+    }
+
+    .ArticleModal_select img,
+    .ArticleModal_date img {
+        width: 2.75vw;
+        height: 2.75vw;
+    }
+
+    .ArticleModal_native {
+        font-size: 1.92vw;
+    }
+
+    .ArticleModal_link_add {
+        font-size: 1.92vw;
+        text-underline-offset: 0.55vw;
+    }
+
+    .ArticleModal_additional {
+        margin-top: 2.75vw;
+        gap: 2.75vw;
+    }
+
+    .ArticleModal_section_title {
+        font-size: 2.75vw;
+        margin-bottom: 1.37vw;
+        letter-spacing: -0.03em;
+        line-height: 110%;
+    }
+
+    .ArticleModal_footer {
+        gap: 2.75vw;
+        padding-top: 2.75vw;
+        border-top: 0.14vw solid rgba(255, 255, 255, 0.12);
+        margin-top: 2.75vw;
+    }
+
+    .ArticleModal_save,
+    .ArticleModal_cancel {
+        padding: 2.47vw 3.3vw;
+        border-radius: 5.49vw;
+        font-size: 1.92vw;
+        height: 5.77vw;
+        letter-spacing: -0.03em;
+    }
+
+    .ArticleModal_cancel {
+        border: 0.14vw solid rgba(255, 255, 255, 0.3);
+    }
+}
+
+/* ========================================
+   MOBILE (max-width: 767px)
+======================================== */
+@media (max-width: 767px) {
+    .ArticleModal_panel {
+        width: 100vw;
+        left: 0;
+        padding: 5vw 4vw;
+        box-shadow: none;
+    }
+
+    .ArticleModal_header {
+        margin-bottom: 5vw;
+        flex-shrink: 0;
+    }
+
+    .ArticleModal_header h2 {
+        font-size: 6.25vw;
+        font-weight: 500;
+        letter-spacing: -0.03em;
+        line-height: 110%;
+    }
+
+    .ArticleModal_close {
+        font-size: 4.375vw;
+        padding: 2.5vw;
+    }
+
+    .ArticleModal_body {
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-right: 1.25vw;
+    }
+
+    .ArticleModal_body::-webkit-scrollbar {
+        width: 1.25vw;
+    }
+
+    .ArticleModal_body::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .ArticleModal_body::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 0.625vw;
+    }
+
+    .ArticleModal_grid {
+        display: flex;
+        flex-direction: column;
+        gap: 5vw;
+    }
+
+    .ArticleModal_col {
+        gap: 5vw;
+        width: 100%;
+    }
+
+    .ArticleModal_block {
+        gap: 2.5vw;
+    }
+
+    .ArticleModal_block_title {
+        font-size: 4.375vw;
+        letter-spacing: -0.03em;
+        line-height: 110%;
+    }
+
+    .ArticleModal_group {
+        gap: 2.5vw;
+    }
+
+    .ArticleModal_group label {
+        font-size: 4.375vw;
+        letter-spacing: -0.03em;
+        line-height: 110%;
+    }
+
+    .field-input,
+    .field-textarea,
+    .ArticleModal_upload {
+        border-radius: 2.188vw;
+        border: 0.31vw solid rgba(255, 255, 255, 0.12);
+        font-size: 4.375vw;
+        padding: 3.125vw 4.688vw;
+        letter-spacing: -0.03em;
+        width: 100%;
+    }
+
+    .field-input {
+        height: 11.875vw;
+    }
+
+    .field-textarea {
+        min-height: 28.125vw;
+    }
+
+    .field-textarea--description {
+        height: 56.563vw;
+        min-height: 56.563vw;
+        max-height: 56.563vw;
+        border-radius: 2.5vw;
+        border: 2.5vw solid rgba(64, 64, 64, 1);
+        padding: 3.125vw;
+    }
+
+    .ArticleModal_upload {
+        height: 35vw;
+        flex-direction: column;
+    }
+
+    .ArticleModal_upload--main {
+        height: 35vw;
+    }
+
+    .ArticleModal_upload_content {
+        gap: 3.125vw;
+    }
+
+    .ArticleModal_upload_content img {
+        width: 11.25vw;
+        height: 11.25vw;
+    }
+
+    .ArticleModal_upload span {
+        font-size: 3.75vw;
+    }
+
+    .ArticleModal_photos_row {
+        margin-top: 2.5vw;
+        gap: 2.5vw;
+        flex-wrap: wrap;
+    }
+
+    .ArticleModal_photo_small {
+        width: 31.25vw;
+        height: 25.625vw;
+        border-radius: 2.188vw;
+    }
+
+    .ArticleModal_photo_actions {
+        left: 2.5vw;
+        right: 2.5vw;
+        bottom: 2.5vw;
+    }
+
+    .ArticleModal_icon-btn {
+        width: 6.25vw;
+        height: 6.25vw;
+    }
+
+    .ArticleModal_icon-btn img {
+        width: 3.75vw;
+        height: 3.75vw;
+    }
+
+    .ArticleModal_select,
+    .ArticleModal_date {
+        height: 11.875vw;
+        border-radius: 2.188vw;
+        border: 0.31vw solid rgba(255, 255, 255, 0.12);
+        padding: 0 3.125vw;
+        gap: 1.563vw;
+        font-size: 4.375vw;
+    }
+
+    .ArticleModal_select img,
+    .ArticleModal_date img {
+        width: 5vw;
+        height: 5vw;
+    }
+
+    .ArticleModal_native {
+        font-size: 4.375vw;
+    }
+
+    .ArticleModal_link_add {
+        font-size: 4.375vw;
+        text-underline-offset: 0.625vw;
+    }
+
+    .ArticleModal_additional {
+        margin-top: 5vw;
+        gap: 5vw;
+    }
+
+    .ArticleModal_section_title {
+        font-size: 5.625vw;
+        margin-bottom: 2.5vw;
+        letter-spacing: -0.03em;
+        line-height: 110%;
+    }
+
+    .ArticleModal_footer {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5vw;
+        padding-top: 3.125vw;
+        border-top: 0.31vw solid rgba(255, 255, 255, 0.12);
+        flex-shrink: 0;
+    }
+
+    .ArticleModal_save,
+    .ArticleModal_cancel {
+        flex: 1;
+        width: 100%;
+        height: 13.125vw;
+        padding: 5.625vw 0;
+        border-radius: 12.5vw;
+        font-size: 4.375vw;
+        font-weight: 400;
+        letter-spacing: -0.03em;
+    }
+
+    .ArticleModal_cancel {
+        border: 0.31vw solid rgba(255, 255, 255, 0.3);
+    }
+}
