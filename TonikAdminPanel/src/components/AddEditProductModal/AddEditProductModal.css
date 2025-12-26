@@ -594,6 +594,10 @@
     .AddProductPanel_cancel:hover {
         border-color: rgba(255, 255, 255, 0.5);
     }
+    .ArticleModal_subtitle{
+        font-size: 1.6vw !important;
+    }
+
 }
 
 /* ========================================
@@ -859,5 +863,8 @@
 
     .AddProductPanel_cancel {
         border: 0.31vw solid rgba(255, 255, 255, 0.3);
+    }
+    .ArticleModal_subtitle{
+        font-size: 3.3vw !important;
     }
 }

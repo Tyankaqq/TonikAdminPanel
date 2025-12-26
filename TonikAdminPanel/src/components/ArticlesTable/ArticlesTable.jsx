@@ -1,7 +1,7 @@
 // src/components/ArticlesTable/ArticlesTable.jsx
 import React, { useState } from 'react';
 import Pagination from '../Pagination/Pagination';
-import WhiteGalochka from '../../assets/icons/WhiteGalochka.png';
+import WhiteGalochka from '../../assets/icons/WhiteGalochka.svg';
 import PointerIcon from '../../assets/icons/pointer.svg';
 import './ArticlesTable.css';
 

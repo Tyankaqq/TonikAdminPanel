@@ -15,6 +15,7 @@
 
 .ArticlesTable_table {
     width: 100%;
+    min-width: 800px; /* минимальная ширина таблицы */
     border-collapse: collapse;
 }
 
@@ -30,26 +31,32 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: var(--clr-white);
+    white-space: nowrap;
 }
 
 .ArticlesTable_th--checkbox {
     width: 3vw;
+    min-width: 40px;
 }
 
 .ArticlesTable_th--title {
     width: auto;
+    min-width: 200px;
 }
 
 .ArticlesTable_th--category {
     width: 15vw;
+    min-width: 120px;
 }
 
 .ArticlesTable_th--date {
     width: 15vw;
+    min-width: 120px;
 }
 
 .ArticlesTable_th--status {
     width: 18vw;
+    min-width: 150px;
 }
 
 .ArticlesTable_th_content {
@@ -92,6 +99,9 @@
     font-size: 0.85vw;
     font-weight: 400;
     color: var(--clr-white);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .ArticlesTable_checkbox {
@@ -106,6 +116,10 @@
     display: flex;
     align-items: center;
     gap: 7.97vw; /* 153px at 1920px */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 200px;
 }
 
 .ArticlesTable_pointer {
@@ -116,7 +130,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
+    flex-shrink: 0;
     transition: opacity 0.3s ease;
 }
 
@@ -135,6 +149,7 @@
     align-items: center;
     gap: 0.52vw;
     cursor: pointer;
+    min-width: 120px; /* минимальная ширина для toggle */
 }
 
 .ArticlesTable_toggle input {
@@ -148,6 +163,7 @@
     border-radius: 1.30vw;
     position: relative;
     transition: background-color 0.3s ease;
+    flex-shrink: 0;
 }
 
 .ArticlesTable_toggle_slider::before {
@@ -163,7 +179,7 @@
 }
 
 .ArticlesTable_toggle input:checked + .ArticlesTable_toggle_slider {
-    background-color: rgba(205, 255, 255, 1)    ;
+    background-color: rgba(205, 255, 255, 1);
 }
 
 .ArticlesTable_toggle input:checked + .ArticlesTable_toggle_slider::before {
@@ -173,6 +189,7 @@
 .ArticlesTable_toggle_text {
     font-size: 0.83vw;
     color: var(--clr-white);
+    white-space: nowrap;
 }
 
 /* ========================================
@@ -183,23 +200,48 @@
         margin-bottom: 2.75vw;
     }
 
+    .ArticlesTable_table {
+        min-width: 900px; /* увеличенная минимальная ширина для планшета */
+    }
+
     .ArticlesTable_th {
         padding: 1.65vw 2.2vw;
         font-size: 1.92vw;
+        white-space: nowrap;
     }
 
     .ArticlesTable_th--checkbox {
         width: 5.5vw;
+        min-width: 50px;
+    }
+
+    .ArticlesTable_th--title {
+        min-width: 250px;
+    }
+
+    .ArticlesTable_th--category {
+        min-width: 150px;
+    }
+
+    .ArticlesTable_th--date {
+        min-width: 150px;
+    }
+
+    .ArticlesTable_th--status {
+        min-width: 180px;
     }
 
     .ArticlesTable_sort img {
-        width: 1.65vw;
-        height: 1.65vw;
+        width: 3vw;
+        height: 3vw;
     }
 
     .ArticlesTable_table td {
         padding: 1.65vw 2.2vw;
         font-size: 1.92vw;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .ArticlesTable_checkbox {
@@ -208,22 +250,32 @@
     }
 
     .ArticlesTable_title_cell {
-        gap: 21.02vw; /* 153px at 728px */
+        gap: 12.02vw; /* 153px at 728px */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: 250px;
+    }
+
+    .ArticlesTable_pointer {
+        flex-shrink: 0;
     }
 
     .ArticlesTable_pointer img {
-        width: 0.55vw;
+        width: 2.55vw;
         height: 2.2vw;
     }
 
     .ArticlesTable_toggle {
         gap: 1.1vw;
+        min-width: 150px;
     }
 
     .ArticlesTable_toggle_slider {
         width: 5.5vw;
         height: 2.75vw;
         border-radius: 2.75vw;
+        flex-shrink: 0;
     }
 
     .ArticlesTable_toggle_slider::before {
@@ -239,6 +291,7 @@
 
     .ArticlesTable_toggle_text {
         font-size: 1.92vw;
+        white-space: nowrap;
     }
 }
 
@@ -250,23 +303,48 @@
         margin-bottom: 5vw;
     }
 
+    .ArticlesTable_table {
+        min-width: 650px; /* минимальная ширина для мобилки */
+    }
+
     .ArticlesTable_th {
         padding: 2.5vw 3.125vw;
-        font-size: 3.75vw;
+        font-size: 4.4vw;
+        white-space: nowrap;
     }
 
     .ArticlesTable_th--checkbox {
         width: 10vw;
+        min-width: 35px;
+    }
+
+    .ArticlesTable_th--title {
+        min-width: 180px;
+    }
+
+    .ArticlesTable_th--category {
+        min-width: 100px;
+    }
+
+    .ArticlesTable_th--date {
+        min-width: 100px;
+    }
+
+    .ArticlesTable_th--status {
+        min-width: 130px;
     }
 
     .ArticlesTable_sort img {
-        width: 3.125vw;
-        height: 3.125vw;
+        width: 7.125vw;
+        height: 6.125vw;
     }
 
     .ArticlesTable_table td {
         padding: 2.5vw 3.125vw;
         font-size: 4.375vw;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .ArticlesTable_checkbox {
@@ -275,22 +353,32 @@
     }
 
     .ArticlesTable_title_cell {
-        gap: 47.81vw; /* 153px at 320px */
+        gap: 25.81vw; /* 153px at 320px */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: 180px;
+    }
+
+    .ArticlesTable_pointer {
+        flex-shrink: 0;
     }
 
     .ArticlesTable_pointer img {
-        width: 1.25vw;
+        width: 4.25vw;
         height: 5vw;
     }
 
     .ArticlesTable_toggle {
         gap: 2.5vw;
+        min-width: 110px;
     }
 
     .ArticlesTable_toggle_slider {
         width: 11.25vw;
         height: 5.625vw;
         border-radius: 5.625vw;
+        flex-shrink: 0;
     }
 
     .ArticlesTable_toggle_slider::before {
@@ -306,5 +394,6 @@
 
     .ArticlesTable_toggle_text {
         font-size: 4.375vw;
+        white-space: nowrap;
     }
 }
