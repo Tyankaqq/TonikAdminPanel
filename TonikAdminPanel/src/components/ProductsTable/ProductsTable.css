@@ -555,7 +555,7 @@
 
     .ProductsTable_th {
         padding: 3.125vw; /* 10px */
-        font-size: 5vw; /* 16px at 320 */
+        font-size: 4vw; /* 16px at 320 */
         font-weight: 500;
         color: white;
         text-align: left;
@@ -610,7 +610,7 @@
 
     .ProductsTable_td {
         padding: 3.125vw; /* 10px */
-        font-size: 4.375vw; /* 14px at 320 */
+        font-size: 3.5vw; /* 14px at 320 */
         font-weight: 400;
         color: var(--clr-white);
         vertical-align: middle;
@@ -659,6 +659,7 @@
     }
 
     .ProductsTable_name--clickable {
+        font-size: 3.5vw;
         cursor: pointer;
         transition: color 0.2s ease, text-decoration 0.2s ease;
     }

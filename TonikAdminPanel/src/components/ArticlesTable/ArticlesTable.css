@@ -309,7 +309,7 @@
 
     .ArticlesTable_th {
         padding: 2.5vw 3.125vw;
-        font-size: 4.4vw;
+        font-size: 4vw;
         white-space: nowrap;
     }
 
@@ -341,7 +341,7 @@
 
     .ArticlesTable_table td {
         padding: 2.5vw 3.125vw;
-        font-size: 4.375vw;
+        font-size: 3.5vw;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
